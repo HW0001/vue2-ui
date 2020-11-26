@@ -11,5 +11,8 @@
     "ui"
   ],
   "author": "HW0001",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.6.12"
+  }
 }
