@@ -12440,8 +12440,18 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
 var _default = {
-  props: {}
+  props: {
+    iconName: String,
+    iconPostion: {
+      type: String,
+      default: "left"
+    }
+  }
 };
 exports.default = _default;
         var $8fd4d1 = exports.default || module.exports;
@@ -12453,17 +12463,28 @@ exports.default = _default;
         /* template */
         Object.assign($8fd4d1, (function () {
           var render = function() {
+  var _obj
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
     "button",
+    {
+      staticClass: "g-button",
+      class:
+        ((_obj = {}), (_obj["g-button-icon-" + _vm.iconPostion] = true), _obj)
+    },
     [
-      _c("g-icon", { attrs: { "icon-name": "left" } }),
+      _vm.iconName
+        ? _c("g-icon", {
+            staticClass: "g-button-icon",
+            attrs: { "icon-name": _vm.iconName }
+          })
+        : _vm._e(),
       _vm._v(" "),
-      _vm._t("default")
+      _c("span", { staticClass: "g-button-span" }, [_vm._t("default")], 2)
     ],
-    2
+    1
   )
 }
 var staticRenderFns = []
