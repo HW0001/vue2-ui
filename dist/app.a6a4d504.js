@@ -12444,12 +12444,20 @@ exports.default = void 0;
 //
 //
 //
+//
+//
 var _default = {
   props: {
-    iconName: String,
+    icon: String,
     iconPostion: {
       type: String,
       default: "left"
+    },
+    loading: Boolean
+  },
+  computed: {
+    iconName: function iconName() {
+      return this.loading ? "loading" : this.icon;
     }
   }
 };
@@ -12472,10 +12480,13 @@ exports.default = _default;
     {
       staticClass: "g-button",
       class:
-        ((_obj = {}), (_obj["g-button-icon-" + _vm.iconPostion] = true), _obj)
+        ((_obj = {}),
+        (_obj["g-button-icon-" + _vm.iconPostion] = true),
+        (_obj["g-icon-loading"] = _vm.loading),
+        _obj)
     },
     [
-      _vm.iconName
+      _vm.icon
         ? _c("g-icon", {
             staticClass: "g-button-icon",
             attrs: { "icon-name": _vm.iconName }

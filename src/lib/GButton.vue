@@ -1,20 +1,28 @@
 <template>
-  <button class="g-button" :class="{ [`g-button-icon-${iconPostion}`]: true }">
-    <g-icon
-      class="g-button-icon"
-      v-if="iconName"
-      :icon-name="iconName"
-    ></g-icon>
+  <button
+    class="g-button"
+    :class="{
+      [`g-button-icon-${iconPostion}`]: true,
+      'g-icon-loading': loading,
+    }"
+  >
+    <g-icon class="g-button-icon" v-if="icon" :icon-name="iconName"></g-icon>
     <span class="g-button-span"><slot /></span>
   </button>
 </template>
 <script>
 export default {
   props: {
-    iconName: String,
+    icon: String,
     iconPostion: {
       type: String,
       default: "left",
+    },
+    loading: Boolean,
+  },
+  computed: {
+    iconName() {
+      return this.loading ? "loading" : this.icon;
     },
   },
 };
@@ -69,6 +77,19 @@ export default {
     }
     .g-button-span {
       order: 1;
+    }
+  }
+  &.g-icon-loading {
+    .g-button-icon {
+      animation: iconanimate 1s infinite linear;
+    }
+  }
+  @keyframes iconanimate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
 }
