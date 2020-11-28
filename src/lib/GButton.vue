@@ -3,7 +3,7 @@
     @click="$emit('click')"
     class="g-button"
     :class="{
-      [`g-button-icon-${iconPostion}`]: true,
+      [`g-button-icon-${iconPosition}`]: true,
       'g-icon-loading': loading,
     }"
   >
@@ -12,11 +12,13 @@
   </button>
 </template>
 <script>
+import GIcon from "./GIcon.vue";
 export default {
   name: "GButton",
+  components: { GIcon },
   props: {
     icon: String,
-    iconPostion: {
+    iconPosition: {
       type: String,
       default: "left",
     },

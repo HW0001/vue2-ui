@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "description": "基于vue2的ui库",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "scripts": { 
+    "dev-test": "parcel watch test/* --no-cache & karma start",
+    "test": "rm -rf .cache dist && parcel build test/* --no-minify && karma start --single-run"
   },
   "keywords": [
     "vue",
@@ -18,11 +19,20 @@
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.2.0",
+    "chai": "^4.2.0",
+    "chai-spies": "^1.0.0",
+    "karma": "^5.2.3",
+    "karma-chai": "^0.1.0",
+    "karma-chai-spies": "^0.1.4",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-mocha": "^2.0.1",
+    "karma-sinon-chai": "^2.0.2",
+    "mocha": "^8.2.1",
     "parcel-bundler": "^1.12.4",
     "sass": "^1.29.0",
-    "vue-template-compiler": "^2.6.12",
-    "chai": "^4.2.0",
-    "chai-spies": "^1.0.0"
+    "sinon": "^9.2.1",
+    "sinon-chai": "^3.5.0",
+    "vue-template-compiler": "^2.6.12"
   },
   "alias": {
     "vue": "./node_modules/vue/dist/vue.common.js"
