@@ -36,7 +36,9 @@ var expect = chai.expect;
       icon: "setting",
     },
   });
-  const spy = chai.spy(() => {});
+  const spy = chai.spy(() => {
+    console.log(2);
+  });
   vm.$on("click", spy);
   vm.$mount("#test");
   vm.$el.click();

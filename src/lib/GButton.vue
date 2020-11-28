@@ -1,5 +1,6 @@
 <template>
   <button
+    @click="$emit('click')"
     class="g-button"
     :class="{
       [`g-button-icon-${iconPostion}`]: true,
