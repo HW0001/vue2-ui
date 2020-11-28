@@ -32,7 +32,7 @@ export default {
   $focus-color: rgb(64, 169, 255);
   $active-color: rgb(80, 151, 228);
 
-  padding: 0.45em 1em;
+  padding: 0.4em 1em;
   display: inline-flex;
   justify-content: center;
   align-items: center;
