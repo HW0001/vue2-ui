@@ -12,6 +12,9 @@ new Vue({
 });
 
 import chai from "chai";
+import spies from "chai-spies";
+chai.use(spies);
+
 var expect = chai.expect;
 
 {
@@ -33,9 +36,9 @@ var expect = chai.expect;
       icon: "setting",
     },
   });
-  vm.$on("click", function () {
-    console.log(2);
-  });
+  const spy = chai.spy(() => {});
+  vm.$on("click", spy);
   vm.$mount("#test");
   vm.$el.click();
+  expect(spy).to.have.been.called();
 }
