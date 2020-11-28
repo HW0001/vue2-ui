@@ -12447,6 +12447,7 @@ exports.default = void 0;
 //
 //
 var _default = {
+  name: "GButton",
   props: {
     icon: String,
     iconPostion: {
@@ -12532,7 +12533,31 @@ render._withStripped = true
       }
     })();
 },{"_css_loader":"C:/Users/Administrator/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/lib/GButtonGroup.vue":[function(require,module,exports) {
+"use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+var _default = {
+  mounted: function mounted() {
+    var slots = this.$slots.default;
+    slots.forEach(function (e) {
+      var tag = e.tag;
+
+      if (tag && !tag.match(/\w*GButton\w*/)) {
+        console.warn("g-button-group\u5E94\u8BE5\u5B58\u5728\u5B50\u5143\u7D20\u4E3Ag-button\uFF0C\u4F46\u662F\u5374\u51FA\u73B0\u4E86".concat(tag));
+        console.log(232);
+      }
+    });
+  }
+};
+exports.default = _default;
         var $7c9260 = exports.default || module.exports;
       
       if (typeof $7c9260 === 'function') {

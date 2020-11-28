@@ -3,6 +3,22 @@
     <slot />
   </div>
 </template>
+<script>
+export default {
+  mounted() {
+    const slots = this.$slots.default;
+    slots.forEach((e) => {
+      const tag = e.tag;
+      if (tag && !tag.match(/\w*GButton\w*/)) {
+        console.warn(
+          `g-button-group应该存在子元素为g-button，但是却出现了${tag}`
+        );
+        console.log(232);
+      }
+    });
+  },
+};
+</script>
 <style lang="scss">
 .g-button-group {
   display: inline-flex;
