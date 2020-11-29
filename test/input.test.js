@@ -42,6 +42,17 @@ describe("GInput", () => {
       const input = vm.$el.querySelector("input");
       expect(input.readOnly).to.equal(true);
     });
+    it("接收error", () => {
+      vm = new Constructor({
+        propsData: {
+          error: "err",
+        },
+      }).$mount();
+      const use = vm.$el.querySelector("use");
+      const span = vm.$el.querySelector("span");
+      expect(use.getAttribute("xlink:href")).to.equal("#i-error");
+      expect(span.innerText).to.equal("err");
+    });
   });
 
   describe("事件测试", () => {
