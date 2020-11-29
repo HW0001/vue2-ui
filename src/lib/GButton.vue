@@ -31,7 +31,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .g-button {
   $focus-color: rgb(64, 169, 255);
   $active-color: rgb(80, 151, 228);

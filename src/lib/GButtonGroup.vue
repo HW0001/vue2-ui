@@ -5,6 +5,7 @@
 </template>
 <script>
 export default {
+  name: "GButtonGroup",
   mounted() {
     const slots = this.$slots.default;
     slots.forEach((e) => {
@@ -19,7 +20,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .g-button-group {
   display: inline-flex;
   vertical-align: middle;
