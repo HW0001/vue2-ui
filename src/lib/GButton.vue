@@ -32,10 +32,8 @@ export default {
 };
 </script>
 <style lang="scss" scope>
+@import "./scsshelper.scss";
 .g-button {
-  $focus-color: rgb(64, 169, 255);
-  $active-color: rgb(80, 151, 228);
-
   padding: 0.4em 1em;
   display: inline-flex;
   justify-content: center;
