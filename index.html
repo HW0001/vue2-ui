@@ -35,7 +35,9 @@
         <g-input value="今天天气不错" disabled></g-input>
       </div>
       <hr />
-      <g-input value="今天天气不错" error-message="填写的信息有问题"></g-input>
+      <g-input value="今天天气不错" error="填写的信息有问题"></g-input>
+      <hr />
+      <g-input v-model="mess"></g-input>{{mess}}
       <hr />
       <div class="box">
         <g-button>按钮</g-button>

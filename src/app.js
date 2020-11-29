@@ -11,6 +11,9 @@ Vue.component("g-input", GInput);
 
 new Vue({
   el: "#app",
+  data: {
+    mess: "hi",
+  },
   methods: {
     changes(e) {
       console.log(e);

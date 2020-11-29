@@ -1,15 +1,18 @@
 <template>
-  <div class="ginput-wrapping" :class="{ error: errorMessage }">
+  <div class="ginput-wrapping" :class="{ error: error }">
     <input
       type="text"
       :value="value"
       :disabled="disabled"
       :readonly="readonly"
-      v-on="$listeners"
+      @input="$emit('input', $event.target.value)"
+      @change="$emit('change', $event)"
+      @focus="$emit('focus', $event)"
+      @blur="$emit('blur', $event)"
     />
-    <template v-if="errorMessage">
+    <template v-if="error">
       <g-icon iconName="error" class="icon-error"></g-icon>
-      <span class="span-error">{{ errorMessage }}</span>
+      <span class="span-error">{{ error }}</span>
     </template>
   </div>
 </template>
@@ -28,7 +31,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    errorMessage: String,
+    error: String,
   },
 };
 </script>
@@ -57,7 +60,7 @@ export default {
       transition: all 0.5s;
     }
     &:hover {
-      border-color: $focus-color;
+      border-color: $active-color;
       transition: all 0.5s;
     }
     &[disabled] {
