@@ -5,6 +5,7 @@
       :value="value"
       :disabled="disabled"
       :readonly="readonly"
+      v-on="$listeners"
     />
     <template v-if="errorMessage">
       <g-icon iconName="error" class="icon-error"></g-icon>

@@ -11,4 +11,9 @@ Vue.component("g-input", GInput);
 
 new Vue({
   el: "#app",
+  methods: {
+    changes(e) {
+      console.log(e);
+    },
+  },
 });
