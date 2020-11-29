@@ -16,11 +16,11 @@
       #app {
         padding-left: 10px;
       }
-      .box {
-        width: 300px;
-      }
-      * {
+      .box > button {
         margin-bottom: 10px;
+      }
+      .space {
+        height: 10px;
       }
     </style>
   </head>
@@ -29,11 +29,15 @@
       <div class="box">
         <span>这是一个标签</span>
         <g-input value="今天天气不错"></g-input>
-        <g-input value="今天天气不错" disabled></g-input>
+        <hr />
         <g-input value="今天天气不错" readonly></g-input>
+        <hr />
+        <g-input value="今天天气不错" disabled></g-input>
       </div>
       <hr />
-      <div>
+      <g-input value="今天天气不错" error-message="填写的信息有问题"></g-input>
+      <hr />
+      <div class="box">
         <g-button>按钮</g-button>
         <g-button icon="download" icon-position="right">按钮</g-button>
         <g-button icon="setting">按钮</g-button>

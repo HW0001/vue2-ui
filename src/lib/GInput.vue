@@ -1,15 +1,21 @@
 <template>
-  <div class="ginput-wrapping">
+  <div class="ginput-wrapping" :class="{ error: errorMessage }">
     <input
       type="text"
       :value="value"
       :disabled="disabled"
       :readonly="readonly"
     />
+    <template v-if="errorMessage">
+      <g-icon iconName="error" class="icon-error"></g-icon>
+      <span class="span-error">{{ errorMessage }}</span>
+    </template>
   </div>
 </template>
 <script>
+import GIcon from "./GIcon";
 export default {
+  components: { GIcon },
   name: "GInput",
   props: {
     value: String,
@@ -21,6 +27,7 @@ export default {
       type: Boolean,
       default: false,
     },
+    errorMessage: String,
   },
 };
 </script>
@@ -28,10 +35,16 @@ export default {
 @import "./scsshelper.scss";
 .ginput-wrapping {
   display: inline-flex;
-  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+  font-size: inherit;
+  flex-wrap: wrap;
+  > *:not(:last-child) {
+    margin-right: 0.5em;
+  }
   > input {
     padding: 4px 8px;
-    line-height: 1.5;
+    line-height: 1.3;
     border: 1px solid #666;
     border-radius: 4px;
     font-size: inherit;
@@ -50,6 +63,15 @@ export default {
       border-color: #aaa;
       color: #aaa;
     }
+  }
+  &.error > input {
+    border-color: $error-color;
+  }
+  .icon-error {
+    fill: $error-color;
+  }
+  .span-error {
+    color: $error-color;
   }
 }
 </style>
