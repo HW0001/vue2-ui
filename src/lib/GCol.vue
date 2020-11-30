@@ -1,10 +1,6 @@
 <template>
-  <div
-    class="g-col"
-    :class="{ [`span_${span}`]: span, [`offset_${offset}`]: offset }"
-    :style="{ paddingLeft: gutter / 2 + 'px', paddingRight: gutter / 2 + 'px' }"
-  >
-    <div style=" border: 1px solid blue;"><slot /></div>
+  <div class="g-col" :class="colClass" :style="colStyle">
+    <slot />
   </div>
 </template>
 <script>
@@ -18,6 +14,19 @@ export default {
     return {
       gutter: 0,
     };
+  },
+  computed: {
+    colClass() {
+      const { span, offset } = this;
+      return { [`span_${span}`]: span, [`offset_${offset}`]: offset };
+    },
+    colStyle() {
+      const { gutter } = this;
+      return {
+        paddingLeft: gutter / 2 + "px",
+        paddingRight: gutter / 2 + "px",
+      };
+    },
   },
 };
 </script>
