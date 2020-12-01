@@ -30,9 +30,26 @@
   <body>
     <div id="app">
       <g-row align="center" gutter="20">
-        <g-col span="1"><div class="col-wrap">1</div></g-col>
-        <g-col span="2"><div class="col-wrap">2</div></g-col>
-        <g-col span="3"><div class="col-wrap">3</div></g-col>
+        <g-col
+          span="1"
+          :xs="{span:2}"
+          :sm="{span:3}"
+          :md="{span:4}"
+          :lg="{span:5}"
+          :xl="{span:6}"
+          :xxl="{span:7}"
+          ><div class="col-wrap">1</div></g-col
+        >
+        <g-col
+          span="1"
+          :xs="{span:22}"
+          :sm="{span:21}"
+          :md="{span:20}"
+          :lg="{span:19}"
+          :xl="{span:18}"
+          :xxl="{span:17}"
+          ><div class="col-wrap">1</div></g-col
+        >
       </g-row>
       <hr />
       <div class="box">
