@@ -8,7 +8,7 @@
       :root {
         font-size: 14px;
       }
-      body {
+      * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -22,10 +22,19 @@
       .space {
         height: 10px;
       }
+      .col-wrap {
+        border: 1px solid black;
+      }
     </style>
   </head>
   <body>
     <div id="app">
+      <g-row align="center" gutter="20">
+        <g-col span="1"><div class="col-wrap">1</div></g-col>
+        <g-col span="2"><div class="col-wrap">2</div></g-col>
+        <g-col span="3"><div class="col-wrap">3</div></g-col>
+      </g-row>
+      <hr />
       <div class="box">
         <g-row gutter="20">
           <g-col>1</g-col>

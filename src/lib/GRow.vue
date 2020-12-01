@@ -1,5 +1,5 @@
 <template>
-  <div class="g-row" :style="rowStyle">
+  <div class="g-row" :style="rowStyle" :class="rowClass">
     <slot />
   </div>
 </template>
@@ -8,6 +8,13 @@ export default {
   name: "GRow",
   props: {
     gutter: [Number, String],
+    align: {
+      type: String,
+      default: "center",
+      validator(value) {
+        return ["left", "center", "right"].indexOf(value) > -1;
+      },
+    },
   },
   computed: {
     rowStyle() {
@@ -16,6 +23,9 @@ export default {
         marginLeft: -gutter / 2 + "px",
         marginRight: -gutter / 2 + "px",
       };
+    },
+    rowClass() {
+      return ["g-row-" + this.align];
     },
   },
   mounted() {
@@ -28,6 +38,16 @@ export default {
 <style lang="scss" scoped>
 .g-row {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 20px;
+  &.g-row-left {
+    justify-content: flex-start;
+  }
+  &.g-row-center {
+    justify-content: center;
+  }
+  &.g-row-right {
+    justify-content: flex-end;
+  }
 }
 </style>
