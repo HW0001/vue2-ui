@@ -9,7 +9,6 @@ export default {
   props: {
     span: [Number, String],
     offset: [Number, String],
-    xs: { type: Object },
     sm: { type: Object },
     md: { type: Object },
     lg: { type: Object },
@@ -27,7 +26,6 @@ export default {
       return [
         span && `span_${span}`,
         offset && `offset_${offset}`,
-        xs && xs.span && "col_xs_" + xs.span,
         sm && sm.span && "col_sm_" + sm.span,
         md && md.span && "col_md_" + md.span,
         lg && lg.span && "col_lg_" + lg.span,
@@ -46,8 +44,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.g-col {
-}
 $class-prefix: span_;
 @for $n from 1 through 24 {
   .#{$class-prefix}#{$n} {
@@ -59,15 +55,8 @@ $class-prefix: offset_;
   .#{$class-prefix}#{$n} {
     margin-left: ($n/24) * 100%;
   }
-  @media (max-width: 576px) {
-    $class-prefix: col_xs_;
-    @for $n from 1 through 24 {
-      .#{$class-prefix}#{$n} {
-        width: ($n/24) * 100%;
-      }
-    }
-  }
-  @media (min-width: 577px) and (max-width: 768px) {
+
+  @media (min-width: 768px) {
     $class-prefix: col_sm_;
     @for $n from 1 through 24 {
       .#{$class-prefix}#{$n} {
@@ -75,7 +64,7 @@ $class-prefix: offset_;
       }
     }
   }
-  @media (min-width: 769px) and (max-width: 992px) {
+  @media (min-width: 992px) {
     $class-prefix: col_xl_;
     @for $n from 1 through 24 {
       .#{$class-prefix}#{$n} {
@@ -83,7 +72,7 @@ $class-prefix: offset_;
       }
     }
   }
-  @media (min-width: 993px) and (max-width: 1200px) {
+  @media (min-width: 1200px) {
     $class-prefix: col_xl_;
     @for $n from 1 through 24 {
       .#{$class-prefix}#{$n} {
@@ -91,7 +80,7 @@ $class-prefix: offset_;
       }
     }
   }
-  @media (min-width: 1201px) {
+  @media (min-width: 1600px) {
     $class-prefix: col_xxl_;
     @for $n from 1 through 24 {
       .#{$class-prefix}#{$n} {
