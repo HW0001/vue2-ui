@@ -10,8 +10,6 @@ export default {
 </script>
 <style lang="scss" scope>
 .g-footer {
-  height: 100%;
-  width: 100%;
   border: 1px solid red;
 }
 </style>

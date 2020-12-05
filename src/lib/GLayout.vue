@@ -1,5 +1,5 @@
 <template>
-  <section class="g-layout" :class="layoutClass">
+  <section class="g-layout" :class="{ 'g-layout-sider': layoutClass }">
     <slot />
   </section>
 </template>
@@ -22,6 +22,9 @@ export default {
 .g-layout {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  flex-grow: 1;
+  &.g-layout-sider {
+    flex-direction: row;
+  }
 }
 </style>
