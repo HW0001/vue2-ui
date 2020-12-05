@@ -5,6 +5,11 @@ import GIcon from "./lib/GIcon";
 import GInput from "./lib/GInput";
 import GCol from "./lib/GCol";
 import GRow from "./lib/GRow";
+import GLayout from "./lib/GLayout";
+import GMain from "./lib/GMain";
+import GSider from "./lib/GSider";
+import GHeader from "./lib/GHeader";
+import GFooter from "./lib/GFooter";
 
 Vue.component("g-button", GButton);
 Vue.component("g-icon", GIcon);
@@ -12,6 +17,11 @@ Vue.component("g-button-group", GButtonGroup);
 Vue.component("g-input", GInput);
 Vue.component("g-row", GRow);
 Vue.component("g-col", GCol);
+Vue.component("g-layout", GLayout);
+Vue.component("g-main", GMain);
+Vue.component("g-sider", GSider);
+Vue.component("g-header", GHeader);
+Vue.component("g-footer", GFooter);
 
 new Vue({
   el: "#app",
