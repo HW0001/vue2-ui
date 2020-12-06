@@ -24,7 +24,6 @@ export default {
 <style lang="scss" scope>
 .g-sider {
   width: 200px;
-  border: 1px solid red;
   position: relative;
   > button {
     position: absolute;

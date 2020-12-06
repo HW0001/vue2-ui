@@ -11,6 +11,5 @@ export default {
 <style lang="scss" scope>
 .g-main {
   flex-grow: 1;
-  border: 1px solid red;
 }
 </style>

@@ -10,6 +10,5 @@ export default {
 </script>
 <style lang="scss" scope>
 .g-footer {
-  border: 1px solid red;
 }
 </style>

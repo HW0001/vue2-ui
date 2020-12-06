@@ -10,6 +10,5 @@ export default {
 </script>
 <style lang="scss" scope>
 .g-header {
-  border: 1px solid red;
 }
 </style>
