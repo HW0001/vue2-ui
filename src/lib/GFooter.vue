@@ -8,7 +8,3 @@ export default {
   name: "GFooter",
 };
 </script>
-<style lang="scss" scope>
-.g-footer {
-}
-</style>

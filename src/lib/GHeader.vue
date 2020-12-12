@@ -8,7 +8,3 @@ export default {
   name: "GHeader",
 };
 </script>
-<style lang="scss" scope>
-.g-header {
-}
-</style>
