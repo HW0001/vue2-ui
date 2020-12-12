@@ -10,6 +10,14 @@ export default {
 </script>
 <style lang="scss" scope>
 .g-toast {
-  flex-grow: 1;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 100px;
+  border: 1px solid red;
+  transform: translateX(-50%);
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
 }
 </style>

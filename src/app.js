@@ -36,7 +36,7 @@ new Vue({
       console.log(e);
     },
     toastClick() {
-      this.$toast("消息提示");
+      this.$toast("这是一个toast");
     },
   },
 });
