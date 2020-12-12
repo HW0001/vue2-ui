@@ -10,6 +10,7 @@ import GMain from "./lib/GMain";
 import GSider from "./lib/GSider";
 import GHeader from "./lib/GHeader";
 import GFooter from "./lib/GFooter";
+import GToast from "./lib/GToast-plugin";
 
 Vue.component("g-button", GButton);
 Vue.component("g-icon", GIcon);
@@ -23,6 +24,8 @@ Vue.component("g-sider", GSider);
 Vue.component("g-header", GHeader);
 Vue.component("g-footer", GFooter);
 
+Vue.use(GToast);
+
 new Vue({
   el: "#app",
   data: {
@@ -31,6 +34,9 @@ new Vue({
   methods: {
     changes(e) {
       console.log(e);
+    },
+    toastClick() {
+      this.$toast("消息提示");
     },
   },
 });

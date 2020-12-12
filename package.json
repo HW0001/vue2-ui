@@ -4,6 +4,7 @@
   "description": "创建项目并增加button",
   "main": "index.js",
   "scripts": { 
+    "start":"parcel index.html --no-cache",
     "dev-test": " rm -rf .cache dist && parcel watch test/* --no-cache & karma start",
     "test": "rm -rf .cache dist && parcel build test/* --no-minify && karma start --single-run"
   },
