@@ -6,6 +6,29 @@
 <script>
 export default {
   name: "GToast",
+  props: {
+    autoClose: {
+      type: Boolean,
+      default: true,
+    },
+    autoCloseDelay: {
+      type: Number,
+      default: 3,
+    },
+  },
+  mounted() {
+    if (this.autoClose) {
+      setTimeout(() => {
+        this.close();
+      }, this.autoCloseDelay * 1000);
+    }
+  },
+  methods: {
+    close() {
+      this.$el.remove();
+      this.$destroy();
+    },
+  },
 };
 </script>
 <style lang="scss" scope>
@@ -13,11 +36,10 @@ export default {
   position: absolute;
   top: 10px;
   left: 50%;
-  width: 100px;
   border: 1px solid red;
   transform: translateX(-50%);
   font-size: 14px;
-  line-height: 1.5;
+  padding: 4px 16px;
   text-align: center;
 }
 </style>

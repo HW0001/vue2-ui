@@ -4,11 +4,9 @@ export default {
     Vue.prototype.$toast = function(message) {
       const Constructor = Vue.extend(GToast);
       const vm = new Constructor();
-      console.log(vm);
       vm.$slots.default = [message];
-      const div = document.createElement("div");
-      document.body.appendChild(div);
-      vm.$mount(div);
+      vm.$mount();
+      document.body.appendChild(vm.$el);
     };
   },
 };
