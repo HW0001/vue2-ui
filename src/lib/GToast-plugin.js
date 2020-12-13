@@ -1,13 +1,10 @@
 import GToast from "./GToast";
 export default {
   install(Vue) {
-    Vue.prototype.$toast = function(message) {
+    Vue.prototype.$toast = function(message, toastOptions) {
       const Constructor = Vue.extend(GToast);
       const vm = new Constructor({
-        propsData: {
-          autoClose: false,
-          showClose: true,
-        },
+        propsData: toastOptions,
       });
       vm.$slots.default = [message];
       vm.$mount();
