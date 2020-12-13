@@ -49,8 +49,11 @@ export default {
   },
   methods: {
     close() {
-      this.$el.remove();
-      this.$destroy();
+      this.leave = true;
+      setTimeout(() => {
+        this.$el.remove();
+        this.$destroy();
+      }, 1000);
     },
     iconClose() {
       this.close();
@@ -70,6 +73,10 @@ export default {
   max-width: 50%;
   color: #909399;
   animation: toast-animation 0.5s;
+  &.g-toast-leave {
+    top: -100%;
+    transition: 2s;
+  }
   > .wrapper {
     font-size: 14px;
     text-align: start;

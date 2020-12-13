@@ -36,14 +36,11 @@ new Vue({
       console.log(e);
     },
     toastClick() {
-      this.$toast(
-        "这是一个toast这是一个toast这是一个toast这是一个toast这是一个toast这是一个toast这是一个toast这是一个toast这是一个toast这是一个toast这是一个toast这是一个toast这是一个toast这是一个toast这是一个toast",
-        {
-          autoClose: false,
-          showClose: true,
-          useHtml: false,
-        }
-      );
+      this.$toast("这是一个toast", {
+        autoClose: false,
+        showClose: true,
+        useHtml: false,
+      });
     },
   },
 });
