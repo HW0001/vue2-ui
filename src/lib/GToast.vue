@@ -87,17 +87,17 @@ export default {
   max-width: 50%;
   color: #909399;
   &.g-toast-position-top {
-    top: 10px;
-    animation: toast-animation-top 0.5s;
+    top: 0;
+    animation: toast-animation-top .5s;
   }
   &.g-toast-position-middle {
     top: 50%;
     transform: translate(-50%, -50%);
-    animation: toast-animation-middle 0.5s;
+    animation: toast-animation-middle .5s;
   }
   &.g-toast-position-bottom {
-    bottom: 10px;
-    animation: toast-animation-bottom 0.5s;
+    bottom: 0;
+    animation: toast-animation-bottom .5s;
   }
   &.g-toast-leave-top {
     top: -100%;
@@ -127,7 +127,7 @@ export default {
       top: -100%;
     }
     100% {
-      top: 10px;
+      top: 0;
     }
   }
   @keyframes toast-animation-middle {
@@ -144,7 +144,7 @@ export default {
       bottom: -100%;
     }
     100% {
-      bottom: 10px;
+      bottom: 0;
     }
   }
 }

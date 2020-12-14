@@ -40,7 +40,7 @@ new Vue({
         autoClose: false,
         showClose: true,
         useHtml: false,
-        position:"middle"
+        position:"bottom"
       });
     },
   },
