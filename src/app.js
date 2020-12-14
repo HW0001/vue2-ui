@@ -36,7 +36,7 @@ new Vue({
       console.log(e);
     },
     toastClick() {
-      this.$toast("这是一个toast", {
+      this.$toast("这是一个toast"+Math.random()*100, {
         autoClose: false,
         showClose: true,
         useHtml: false,
