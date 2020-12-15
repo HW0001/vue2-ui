@@ -37,7 +37,8 @@ new Vue({
     },
     toastClick() {
       this.$toast("这是一个toast"+Math.random()*100, {
-        autoClose: false,
+        autoClose: true,
+        autoCloseDelay:1,
         showClose: true,
         useHtml: false,
         position:"bottom"

@@ -15,16 +15,16 @@ describe("GToast", () => {
       const vm = new Comstructor({
         propsData: {
           autoClose: true,
-          autoCloseDelay: 1,
+          autoCloseDelay: 0.5,
         },
       });
       const div =  document.createElement("div")
       document.body.append(div)
       vm.$mount(div);
       setTimeout(() => {
-        expect(document.body.contains(vm.$el)).to.eq(true); 
+        expect(document.body.contains(vm.$el)).to.eq(false); 
         done();
-      }, 1500);
+      }, 1800);
     });
 
     it("showClose", () => {
