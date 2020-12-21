@@ -57,6 +57,8 @@ describe("GRow", () => {
         const coldivs = rowdiv.children[0];
         expect(coldivs.classList.contains("col_sm_1")).to.equal(true);
         expect(coldivs.classList.contains("col_sm_offset_2")).to.equal(true);
+        div.remove();
+        vm.$destroy();
         done();
       });
     });
@@ -79,6 +81,8 @@ describe("GRow", () => {
         const coldivs = rowdiv.children[0];
         expect(coldivs.classList.contains("col_md_1")).to.equal(true);
         expect(coldivs.classList.contains("col_md_offset_2")).to.equal(true);
+        div.remove();
+        vm.$destroy();
         done();
       });
     });
@@ -101,6 +105,8 @@ describe("GRow", () => {
         const coldivs = rowdiv.children[0];
         expect(coldivs.classList.contains("col_lg_1")).to.equal(true);
         expect(coldivs.classList.contains("col_lg_offset_2")).to.equal(true);
+        div.remove();
+        vm.$destroy();
         done();
       });
     });
@@ -123,6 +129,8 @@ describe("GRow", () => {
         const coldivs = rowdiv.children[0];
         expect(coldivs.classList.contains("col_xl_1")).to.equal(true);
         expect(coldivs.classList.contains("col_xl_offset_2")).to.equal(true);
+        div.remove();
+        vm.$destroy();
         done();
       });
     });
@@ -145,6 +153,8 @@ describe("GRow", () => {
         const coldivs = rowdiv.children[0];
         expect(coldivs.classList.contains("col_xxl_1")).to.equal(true);
         expect(coldivs.classList.contains("col_xxl_offset_2")).to.equal(true);
+        div.remove();
+        vm.$destroy();
         done();
       });
     });
