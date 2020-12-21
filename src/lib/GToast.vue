@@ -1,5 +1,5 @@
 <template>
-  <div class="g-toast" :class="{ 'g-toast-leave': leave }">
+  <div class="g-toast" :class="toastClasses">
     <div class="wrapper">
       <div v-if="useHtml" v-html="$slots.default[0]"></div>
       <slot v-else></slot>
@@ -39,6 +39,13 @@ export default {
       type: Boolean,
       default: false,
     },
+    position: {
+      type: String,
+      default: "top",
+      validator: function (value) {
+        return ["top", "middle", "bottom"].indexOf(value) > -1;
+      },
+    },
   },
   mounted() {
     if (this.autoClose) {
@@ -59,22 +66,49 @@ export default {
       this.close();
     },
   },
+  computed: {
+    toastClasses() {
+      return {
+        [`g-toast-leave-${this.position}`]: this.leave,
+        [`g-toast-position-${this.position}`]: true,
+      };
+    },
+  },
 };
 </script>
 <style lang="scss" scope>
 .g-toast {
   position: fixed;
   left: 50%;
-  top: 10px;
   transform: translateX(-50%);
   background-color: #fff;
   display: flex;
   align-items: center;
   max-width: 50%;
   color: #909399;
-  animation: toast-animation 0.5s;
-  &.g-toast-leave {
+  &.g-toast-position-top {
+    top: 0;
+    animation: toast-animation-top .5s;
+  }
+  &.g-toast-position-middle {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: toast-animation-middle .5s;
+  }
+  &.g-toast-position-bottom {
+    bottom: 0;
+    animation: toast-animation-bottom .5s;
+  }
+  &.g-toast-leave-top {
     top: -100%;
+    transition: 2s;
+  }
+  &.g-toast-leave-middle {
+    transform: translate(-50%,-40px);
+    transition: 1s;
+  }
+  &.g-toast-leave-bottom {
+    bottom: -100%;
     transition: 2s;
   }
   > .wrapper {
@@ -88,12 +122,29 @@ export default {
     flex-shrink: 0;
     fill: #909399;
   }
-  @keyframes toast-animation {
+  @keyframes toast-animation-top {
     0% {
       top: -100%;
     }
     100% {
-      top: 10px;
+      top: 0;
+    }
+  }
+  @keyframes toast-animation-middle {
+    0% {
+      top: calc(50%);
+      transform: translate(-50%, calc(-50% - 40px));
+    }
+    100% {
+      transform: translate(-50%, -50%);
+    }
+  }
+  @keyframes toast-animation-bottom {
+    0% {
+      bottom: -100%;
+    }
+    100% {
+      bottom: 0;
     }
   }
 }
