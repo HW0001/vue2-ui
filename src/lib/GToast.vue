@@ -60,13 +60,13 @@ export default {
   methods: {
     close() {
       this.leave = true;
+      this.closeCallBack && this.closeCallBack();
       setTimeout(() => {
         this.$el.remove();
         this.$destroy();
       }, 1000);
     },
     iconClose() {
-      this.closeCallBack && this.closeCallBack();
       this.close();
     },
   },
