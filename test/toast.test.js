@@ -38,6 +38,23 @@ describe("GToast", () => {
         vm.$mount(div);
         expect(vm.$el.querySelector("use").getAttribute("xlink:href")).to.eq("#i-close")
       });
+      it("closeCallBack", (done) => {
+        const callback = sinon.fake()
+        const vm = new Comstructor({
+          propsData: {
+            showClose: true,
+            autoCloseDelay:1,
+            closeCallBack:callback
+          },
+        });
+        const div =  document.createElement("div")
+        document.body.append(div)
+        vm.$mount(div);
+        setTimeout(()=>{
+            expect(callback).to.have.been.called;
+            done()
+        },1800)
+      });
 
       it("使用html", () => {
         const vm = new Comstructor({
