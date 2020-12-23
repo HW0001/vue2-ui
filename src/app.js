@@ -37,11 +37,12 @@ new Vue({
     },
     toastClick() {
       this.$toast("这是一个toast"+Math.random()*100, {
-        autoClose: true,
+        autoClose: false,
         autoCloseDelay:1,
         showClose: true,
         useHtml: false,
-        position:"bottom"
+        position:"top",
+        closeCallBack:function(){console.log("我关闭了")}
       });
     },
   },

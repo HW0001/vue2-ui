@@ -31,6 +31,9 @@ export default {
       type: Boolean,
       default: false,
     },
+    closeCallBack: {
+      type: Function,
+    },
     useHtml: {
       type: Boolean,
       default: false,
@@ -63,6 +66,7 @@ export default {
       }, 1000);
     },
     iconClose() {
+      this.closeCallBack && this.closeCallBack();
       this.close();
     },
   },
@@ -88,23 +92,23 @@ export default {
   color: #909399;
   &.g-toast-position-top {
     top: 0;
-    animation: toast-animation-top .5s;
+    animation: toast-animation-top 0.5s;
   }
   &.g-toast-position-middle {
     top: 50%;
     transform: translate(-50%, -50%);
-    animation: toast-animation-middle .5s;
+    animation: toast-animation-middle 0.5s;
   }
   &.g-toast-position-bottom {
     bottom: 0;
-    animation: toast-animation-bottom .5s;
+    animation: toast-animation-bottom 0.5s;
   }
   &.g-toast-leave-top {
     top: -100%;
     transition: 2s;
   }
   &.g-toast-leave-middle {
-    transform: translate(-50%,-40px);
+    transform: translate(-50%, -40px);
     transition: 1s;
   }
   &.g-toast-leave-bottom {
@@ -117,7 +121,7 @@ export default {
     line-height: 1.5;
   }
   > .g-toast-icon {
-    margin-left: 32px;
+    margin-left: 16px;
     cursor: pointer;
     flex-shrink: 0;
     fill: #909399;
