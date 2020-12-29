@@ -1,6 +1,6 @@
 <template>
   <div>
-      <div class="g-tabs-nav">
+      <div class="g-tabs-nav" ref="tabsNav">
         <span v-for="(item,index) in titles" :key="index"
          @click="itemClick($event,item.itemKey)" 
          :class="navClasses(item.itemKey)"
@@ -26,25 +26,32 @@ export default {
   },
   provide(){
      return{eventBus: this.eventBus}
-  }
-  ,
+  },
   mounted() {
-    this.$children.forEach((vm) => this.titles.push({title:vm.$props.title,itemKey:vm.$props.itemKey}));
+    this.$children.forEach((vm,index) =>{
+         this.titles.push({title:vm.$props.title,itemKey:vm.$props.itemKey})
+         if(vm.$props.itemKey===this.activeKey){
+           this.$nextTick(()=>{
+            const el = Array.from(this.$refs.tabsNav.children)[index]
+            this.buildUnderLineStyle(el)
+           })
+         }
+    });
     this.eventBus.$emit("itemClick",this.activeKey)
   },
   methods:{
       itemClick(e,key){
-         const {width,left}=e.target.getBoundingClientRect()
-         this.buildUnderLineStyle(width,left);
-         this.eventBus.$emit("itemClick",key)
-         this.$emit("update:activeKey",key)
+        this.buildUnderLineStyle(e.target);
+        this.eventBus.$emit("itemClick",key)
+        this.$emit("update:activeKey",key)
       },
       navClasses(key){
           return {selected:this.activeKey===key}
       },
-      buildUnderLineStyle(width,left){
-          this.$refs.underline.style.width=`${width}px`
-          this.$refs.underline.style.left=`${left}px`
+      buildUnderLineStyle(el){
+        const {width,left}=el.getBoundingClientRect()
+        this.$refs.underline.style.width=`${width}px`
+        this.$refs.underline.style.left=`${left}px`
       }
   }
 };
@@ -52,7 +59,7 @@ export default {
 <style lang="scss" scoped>
 .g-tabs-nav{
     $active-color:rgb(64,170,255);
-    border-bottom: 1px solid rgb(228,231,237);
+    border-bottom: 2px solid rgb(228,231,237);
     position: relative;
     >.g-tabs-nav-items{
         display: inline-block;
@@ -65,7 +72,7 @@ export default {
     >.g-tabs-underline{
         display: inline-block;
         position: absolute;
-        bottom: -1px;
+        bottom: -2px;
         left: 0;
         width: 100px;
         height: 0;
