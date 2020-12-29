@@ -2,8 +2,11 @@
   <div>
       <div class="g-tabs-nav">
         <span v-for="(item,index) in titles" :key="index"
-         @click="itemClick(item.itemKey)" 
-         :class="navClasses(item.itemKey)">{{item.title}}</span>
+         @click="itemClick($event,item.itemKey)" 
+         :class="navClasses(item.itemKey)"
+         class="g-tabs-nav-items"
+         >{{item.title}}</span>
+         <div class="g-tabs-underline" ref="underline"></div>
       </div>
     <slot></slot>
   </div>
@@ -30,26 +33,44 @@ export default {
     this.eventBus.$emit("itemClick",this.activeKey)
   },
   methods:{
-      itemClick(key){
+      itemClick(e,key){
+         const {width,left}=e.target.getBoundingClientRect()
+         this.buildUnderLineStyle(width,left);
          this.eventBus.$emit("itemClick",key)
          this.$emit("update:activeKey",key)
       },
       navClasses(key){
           return {selected:this.activeKey===key}
+      },
+      buildUnderLineStyle(width,left){
+          this.$refs.underline.style.width=`${width}px`
+          this.$refs.underline.style.left=`${left}px`
       }
   }
 };
 </script>
 <style lang="scss" scoped>
 .g-tabs-nav{
-    >span{
+    $active-color:rgb(64,170,255);
+    border-bottom: 1px solid rgb(228,231,237);
+    position: relative;
+    >.g-tabs-nav-items{
         display: inline-block;
         padding: .5em 1em;
         cursor: pointer;
         &.selected{
-            color: rgb(64,170,255);
+            color: $active-color;
         }
     }
-    border-bottom: 1px solid rgb(228,231,237);
+    >.g-tabs-underline{
+        display: inline-block;
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100px;
+        height: 0;
+        border: 1px solid $active-color;
+        transition: all 350ms;
+    }
 }
 </style>
