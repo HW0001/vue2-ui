@@ -11,6 +11,8 @@ import GSider from "./lib/GSider";
 import GHeader from "./lib/GHeader";
 import GFooter from "./lib/GFooter";
 import GToast from "./lib/GToast-plugin";
+import GTabs from "./lib/GTabs";
+import GTabItem from "./lib/GTabItem";
 
 Vue.component("g-button", GButton);
 Vue.component("g-icon", GIcon);
@@ -23,6 +25,8 @@ Vue.component("g-main", GMain);
 Vue.component("g-sider", GSider);
 Vue.component("g-header", GHeader);
 Vue.component("g-footer", GFooter);
+Vue.component("g-tabs", GTabs);
+Vue.component("g-tab-item", GTabItem);
 
 Vue.use(GToast);
 
@@ -30,6 +34,7 @@ new Vue({
   el: "#app",
   data: {
     mess: "hi",
+    tabsKey:"2"
   },
   methods: {
     changes(e) {
