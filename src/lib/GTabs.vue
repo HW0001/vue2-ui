@@ -33,14 +33,17 @@ export default {
       }
   },
   mounted() {
+      console.log(this);
     this.$children.forEach((vm,index) =>{
-         this.titles.push({title:vm.$props.title,itemKey:vm.$props.itemKey})
-         if(vm.$props.itemKey===this.activeKey){
+        if(vm.$options.name!=="GTabItem")
+        throw new Error("Wrong subcomponent type")
+        this.titles.push({title:vm.$props.title,itemKey:vm.$props.itemKey})
+        if(vm.$props.itemKey===this.activeKey){
            this.$nextTick(()=>{
             const el = Array.from(this.$refs.tabsNav.children)[index]
             this.buildUnderLineStyle(el)
            })
-         }
+        }
     });
     this.eventBus.$emit("itemClick",this.activeKey)
   },
@@ -55,7 +58,6 @@ export default {
       },
       buildUnderLineStyle(el){
         const {width,left}=el.getBoundingClientRect()
-        console.log(left);
         this.$refs.underline.style.width=`${width}px`
         this.$refs.underline.style.left=`${left-this.tabLeft}px`
       }

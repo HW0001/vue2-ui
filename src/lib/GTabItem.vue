@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: "GTabs",
+  name: "GTabItem",
   inject:["eventBus"],
   data(){
      return {isActive:false} 
