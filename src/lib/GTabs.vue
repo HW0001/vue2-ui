@@ -33,7 +33,6 @@ export default {
       }
   },
   mounted() {
-      console.log(this);
     this.$children.forEach((vm,index) =>{
         if(vm.$options.name!=="GTabItem")
         throw new Error("Wrong subcomponent type")
