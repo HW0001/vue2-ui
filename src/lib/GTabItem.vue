@@ -12,7 +12,8 @@ export default {
   },
   props: {
     title: String | Number,
-    itemKey:String|Number
+    itemKey:String|Number,
+    disabled:{type:Boolean,default:false}
   },
   mounted(){
       this.eventBus.$on("itemClick",this.itemClick)
