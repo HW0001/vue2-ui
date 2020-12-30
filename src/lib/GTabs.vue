@@ -27,6 +27,11 @@ export default {
   provide(){
      return{eventBus: this.eventBus}
   },
+  computed:{
+      tabLeft(){
+          return this.$refs.tabsNav.getBoundingClientRect().left
+      }
+  },
   mounted() {
     this.$children.forEach((vm,index) =>{
          this.titles.push({title:vm.$props.title,itemKey:vm.$props.itemKey})
@@ -50,8 +55,9 @@ export default {
       },
       buildUnderLineStyle(el){
         const {width,left}=el.getBoundingClientRect()
+        console.log(left);
         this.$refs.underline.style.width=`${width}px`
-        this.$refs.underline.style.left=`${left}px`
+        this.$refs.underline.style.left=`${left-this.tabLeft}px`
       }
   }
 };
@@ -73,7 +79,6 @@ export default {
         display: inline-block;
         position: absolute;
         bottom: -2px;
-        left: 0;
         width: 100px;
         height: 0;
         border: 1px solid $active-color;

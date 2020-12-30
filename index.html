@@ -1,113 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      :root {
-        font-size: 14px;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      #app {
-        padding-left: 10px;
-      }
-      .box > button {
-        margin-bottom: 10px;
-      }
-      .space {
-        height: 10px;
-      }
-      .col-wrap {
-        border: 1px solid black;
-      }
+        :root {
+            font-size: 14px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #app {
+            padding-left: 10px;
+        }
+
+        .box>button {
+            margin-bottom: 10px;
+        }
+
+        .space {
+            height: 10px;
+        }
+
+        .col-wrap {
+            border: 1px solid black;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="app">
         <div>
             <g-tabs :active-key.sync=tabsKey>
-            <g-tab-item title='一www' item-key='1'>测试1</g-tab-item>
-            <g-tab-item title='二的' item-key='2'>测试2</g-tab-item>
-            <g-tab-item title='三是是是' item-key='3'>测试3</g-tab-item>
+                <g-tab-item title='一www' item-key='1'>测试1</g-tab-item>
+                <g-tab-item title='二的' item-key='2'>测试2</g-tab-item>
+                <g-tab-item title='三是是是' item-key='3'>测试3</g-tab-item>
             </g-tabs>
         </div>
-      <div>
-        <button @click="toastClick">点我</button>
-      </div>
-      <hr />
-      <g-layout style="height: 400px;">
-        <g-header>header</g-header>
-        <g-layout>
-          <g-sider>sider</g-sider>
-          <g-main>main</g-main>
-        </g-layout>
-        <g-footer>footer</g-footer>
-      </g-layout>
-      <hr />
-      <g-row align="center">
-        <g-col span="2" :lg="{span:7,offset:2}" :xl="{span:12}" :xxl="{span:15}"
-          ><div class="col-wrap">1</div></g-col
-        >
-        <g-col span="22" :lg="{span:15}" :xl="{span:12}" :xxl="{span:9}"
-          ><div class="col-wrap">1</div></g-col
-        >
-      </g-row>
-      <hr />
-      <div class="box">
-        <g-row gutter="20">
-          <g-col>1</g-col>
-          <g-col>2</g-col>
-        </g-row>
-        <g-row gutter="20">
-          <g-col>1</g-col>
-          <g-col>2</g-col>
-          <g-col>3</g-col>
-        </g-row>
-        <g-row>
-          <g-col span="4">1</g-col>
-          <g-col span="8">2</g-col>
-          <g-col span="12">3</g-col>
-        </g-row>
-        <g-row gutter="20">
-          <g-col span="4">1</g-col>
-          <g-col span="8">2</g-col>
-          <g-col span="10" offset="2">3</g-col>
-        </g-row>
-      </div>
-      <hr />
-      <div class="box">
-        <span>这是一个标签</span>
-        <g-input value="今天天气不错" @change="changes"></g-input>
-        <hr />
-        <g-input value="今天天气不错" readonly></g-input>
-        <hr />
-        <g-input value="今天天气不错" disabled></g-input>
-      </div>
-      <hr />
-      <g-input value="今天天气不错" error="填写的信息有问题"></g-input>
-      <hr />
-      <g-input v-model="mess"></g-input>{{mess}}
-      <hr />
-      <div class="box">
-        <g-button>按钮</g-button>
-        <g-button icon="download" icon-position="right">按钮</g-button>
-        <g-button icon="setting">按钮</g-button>
-        <g-button icon="setting" loading>按钮</g-button>
-        <g-button icon="setting" icon-position="right" loading>按钮</g-button>
         <div>
-          <g-button-group>
-            <g-button icon="left">前进</g-button>
-            <g-button>更多</g-button>
-            <g-button icon="right" icon-position="right">退后</g-button>
-          </g-button-group>
+            <button @click="toastClick">点我</button>
         </div>
-      </div>
+        <hr />
+        <g-layout style="height: 400px;">
+            <g-header>header</g-header>
+            <g-layout>
+                <g-sider>sider</g-sider>
+                <g-main>main</g-main>
+            </g-layout>
+            <g-footer>footer</g-footer>
+        </g-layout>
+        <hr />
+        <g-row align="center">
+            <g-col span="2" :lg="{span:7,offset:2}" :xl="{span:12}" :xxl="{span:15}">
+                <div class="col-wrap">1</div>
+            </g-col>
+            <g-col span="22" :lg="{span:15}" :xl="{span:12}" :xxl="{span:9}">
+                <div class="col-wrap">1</div>
+            </g-col>
+        </g-row>
+        <hr />
+        <div class="box">
+            <g-row gutter="20">
+                <g-col>1</g-col>
+                <g-col>2</g-col>
+            </g-row>
+            <g-row gutter="20">
+                <g-col>1</g-col>
+                <g-col>2</g-col>
+                <g-col>3</g-col>
+            </g-row>
+            <g-row>
+                <g-col span="4">1</g-col>
+                <g-col span="8">2</g-col>
+                <g-col span="12">3</g-col>
+            </g-row>
+            <g-row gutter="20">
+                <g-col span="4">1</g-col>
+                <g-col span="8">2</g-col>
+                <g-col span="10" offset="2">3</g-col>
+            </g-row>
+        </div>
+        <hr />
+        <div class="box">
+            <span>这是一个标签</span>
+            <g-input value="今天天气不错" @change="changes"></g-input>
+            <hr />
+            <g-input value="今天天气不错" readonly></g-input>
+            <hr />
+            <g-input value="今天天气不错" disabled></g-input>
+        </div>
+        <hr />
+        <g-input value="今天天气不错" error="填写的信息有问题"></g-input>
+        <hr />
+        <g-input v-model="mess"></g-input>{{mess}}
+        <hr />
+        <div class="box">
+            <g-button>按钮</g-button>
+            <g-button icon="download" icon-position="right">按钮</g-button>
+            <g-button icon="setting">按钮</g-button>
+            <g-button icon="setting" loading>按钮</g-button>
+            <g-button icon="setting" icon-position="right" loading>按钮</g-button>
+            <div>
+                <g-button-group>
+                    <g-button icon="left">前进</g-button>
+                    <g-button>更多</g-button>
+                    <g-button icon="right" icon-position="right">退后</g-button>
+                </g-button-group>
+            </div>
+        </div>
     </div>
     <script src="./src/app.js"></script>
-  </body>
+</body>
+
 </html>
