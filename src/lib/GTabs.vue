@@ -25,7 +25,7 @@ export default {
     };
   },
   props: {
-    activeKey: String | Number,
+    activeKey:{type: String | Number,required:true},
   },
   provide() {
     return { eventBus: this.eventBus };
@@ -74,7 +74,8 @@ export default {
 <style lang="scss" scoped>
 .g-tabs-nav {
   $active-color: rgb(64, 170, 255);
-  border-bottom: 2px solid rgb(228, 231, 237);
+  $bgc-color:rgb(228, 231, 237);
+  border-bottom: 2px solid $bgc-color;
   position: relative;
   > .g-tabs-nav-items {
     display: inline-block;
