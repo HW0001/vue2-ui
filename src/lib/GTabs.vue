@@ -30,7 +30,7 @@ export default {
   },
   props: {
     activeKey: { type: String | Number, required: true },
-    change: Function,
+    itemChange: Function,
   },
   provide() {
     return { eventBus: this.eventBus };
@@ -65,8 +65,8 @@ export default {
         el: e.target,
         key,
       };
-      if (typeof this.change === "function") {
-        this.change(this.next, this.currentData.key);
+      if (typeof this.itemChange === "function") {
+        this.itemChange(this.next, this.currentData.key);
       } else {
         this.next();
       }
