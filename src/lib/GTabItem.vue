@@ -16,7 +16,7 @@ export default {
     disabled:{type:Boolean,default:false}
   },
   mounted(){
-      this.eventBus.$on("itemClick",this.itemClick)
+      this.eventBus && this.eventBus.$on("itemClick",this.itemClick)
   },
   methods:{
       itemClick(key){

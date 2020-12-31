@@ -22,10 +22,15 @@ export default {
     return {
       titles: [],
       eventBus: new Vue(),
+      currentData: {
+        el: null,
+        key: null,
+      },
     };
   },
   props: {
-    activeKey:{type: String | Number,required:true},
+    activeKey: { type: String | Number, required: true },
+    change: Function,
   },
   provide() {
     return { eventBus: this.eventBus };
@@ -55,13 +60,27 @@ export default {
   },
   methods: {
     itemClick(e, key, disabled) {
-      if(disabled) return;
-      this.buildUnderLineStyle(e.target);
-      this.eventBus.$emit("itemClick", key);
-      this.$emit("update:activeKey", key);
+      if (disabled) return;
+      this.currentData = {
+        el: e.target,
+        key,
+      };
+      if (typeof this.change === "function") {
+        this.change(this.next, this.currentData.key);
+      } else {
+        this.next();
+      }
+    },
+    next() {
+      this.buildUnderLineStyle(this.currentData.el);
+      this.eventBus.$emit("itemClick", this.currentData.key);
+      this.$emit("update:activeKey", this.currentData.key);
     },
     navClasses(item) {
-      return { selected: this.activeKey === item.itemKey,disabled:item.disabled };
+      return {
+        selected: this.activeKey === item.itemKey,
+        disabled: item.disabled,
+      };
     },
     buildUnderLineStyle(el) {
       const { width, left } = el.getBoundingClientRect();
@@ -74,7 +93,7 @@ export default {
 <style lang="scss" scoped>
 .g-tabs-nav {
   $active-color: rgb(64, 170, 255);
-  $bgc-color:rgb(228, 231, 237);
+  $bgc-color: rgb(228, 231, 237);
   border-bottom: 2px solid $bgc-color;
   position: relative;
   > .g-tabs-nav-items {
@@ -84,9 +103,9 @@ export default {
     &.selected {
       color: $active-color;
     }
-    &.disabled{
-        cursor: not-allowed;
-        opacity: .5;
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
     }
   }
   > .g-tabs-underline {

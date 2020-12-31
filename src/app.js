@@ -50,5 +50,9 @@ new Vue({
         closeCallBack:function(){console.log("我关闭了")}
       });
     },
+    itemChange(next,nextkey){
+        console.log(nextkey);
+        next()
+    }
   },
 });
