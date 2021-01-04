@@ -13,6 +13,7 @@ import GFooter from "./lib/GFooter";
 import GToast from "./lib/GToast-plugin";
 import GTabs from "./lib/GTabs";
 import GTabItem from "./lib/GTabItem";
+import GPopover from "./lib/GPopover";
 
 Vue.component("g-button", GButton);
 Vue.component("g-icon", GIcon);
@@ -27,6 +28,7 @@ Vue.component("g-header", GHeader);
 Vue.component("g-footer", GFooter);
 Vue.component("g-tabs", GTabs);
 Vue.component("g-tab-item", GTabItem);
+Vue.component("g-popover", GPopover);
 
 Vue.use(GToast);
 
