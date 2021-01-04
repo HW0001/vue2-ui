@@ -36,14 +36,7 @@
 
 <body>
     <div id="app">
-        <div style="padding-top: 50px;">
-            <g-popover>
-                <template v-slot:content>
-                    <p>我是测试的</p>
-                </template>
-                <g-button>点我</g-button>
-            </g-popover>
-        </div>
+
         <div>
             <g-tabs :active-key.sync="tabsKey" :item-change='itemChange'>
                 <g-tab-item title='一www' item-key='1' disabled>测试1</g-tab-item>
@@ -121,6 +114,15 @@
                     <g-button icon="right" icon-position="right">退后</g-button>
                 </g-button-group>
             </div>
+        </div>
+        <div style="padding-top: 40px;">
+            <g-popover trigger='bottom'>
+                <template v-slot:content>
+                    <p>我是测试的</p>
+                    <p>也是测试的</p>
+                </template>
+                <g-button>点我</g-button>
+            </g-popover>
         </div>
     </div>
     <script src="./src/app.js"></script>

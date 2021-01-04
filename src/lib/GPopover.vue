@@ -9,6 +9,15 @@
 <script>
 export default {
   name: "GPopover",
+  props: {
+    trigger: {
+      type: String,
+      default: "top",
+      validator: (value) => {
+        return ["top", "bottom", "left", "right"].indexOf(value) > -1;
+      },
+    },
+  },
   data() {
     return {
       visible: false,
@@ -29,14 +38,32 @@ export default {
         if (this.visible) {
           const el = this.$refs.contentWrapper;
           document.body.append(el);
-          const {left,top,width,height}=this.$refs.trigger.getBoundingClientRect()
-          const {height:popheight}=el.getBoundingClientRect()
-          let poptop=top-height-10
-          if(poptop<popheight){
-              poptop=top+height+10
+          const top = this.$refs.trigger.offsetTop;
+          const left = this.$refs.trigger.offsetLeft;
+          const {
+            height: popheight,
+            width: popwidth,
+          } = el.getBoundingClientRect();
+          let poptop = top - popheight - 10;
+          if (this.trigger === "bottom") {
+            poptop = top + popheight + 10;
           }
-          el.style.left=`${left}px`
-          el.style.top=`${poptop}px`
+          if (this.trigger === "top" && poptop < 0) {
+            poptop = top + popheight + 10;
+          } else if (
+            this.trigger === "bottom" &&
+            poptop > document.body.getBoundingClientRect().height
+          ) {
+            poptop = top - popheight - 10;
+          }
+          
+         let popleft = left - popwidth / 2;
+          if (popleft < 0) {
+            popleft = left;
+          }
+            console.log(poptop);
+          el.style.left = `${popleft}px`;
+          el.style.top = `${poptop}px`;
         }
       });
     },
