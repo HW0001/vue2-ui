@@ -25,8 +25,21 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      const handle = () => {
-        this.visible = false;
+      const handle = (e) => {
+        let isUpdaet = true
+        let el = e.target
+        while(el !== null){
+            if(el===this.$refs.contentWrapper){
+                isUpdaet=false
+                el=null
+            }
+            else if(el===document.body){
+                el=null
+            }else{
+                el=el.parentNode
+            }
+        }
+        if (isUpdaet) this.visible = false;
       };
       document.addEventListener("click", handle);
     });
@@ -40,28 +53,32 @@ export default {
           document.body.append(el);
           const top = this.$refs.trigger.offsetTop;
           const left = this.$refs.trigger.offsetLeft;
+          const { width } = this.$refs.trigger.getBoundingClientRect();
           const {
             height: popheight,
             width: popwidth,
           } = el.getBoundingClientRect();
-          let poptop = top - popheight - 10;
+          let poptop = top - popheight - 12;
           if (this.trigger === "bottom") {
-            poptop = top + popheight + 10;
+            poptop = top + popheight + 12;
           }
           if (this.trigger === "top" && poptop < 0) {
-            poptop = top + popheight + 10;
+            poptop = top + popheight + 12;
           } else if (
             this.trigger === "bottom" &&
             poptop > document.body.getBoundingClientRect().height
           ) {
-            poptop = top - popheight - 10;
+            poptop = top - popheight - 12;
           }
-          
-         let popleft = left - popwidth / 2;
-          if (popleft < 0) {
-            popleft = left;
+          console.log(popwidth);
+          console.log(left);
+          let popleft = left - (popwidth - width) / 2;
+          console.log(popleft);
+          if (this.trigger === "right") {
+            poptop = top + popheight / 2;
+            popleft = left - 12;
           }
-            console.log(poptop);
+
           el.style.left = `${popleft}px`;
           el.style.top = `${poptop}px`;
         }
@@ -74,5 +91,6 @@ export default {
 .contentWrapper {
   position: absolute;
   background: #ffffff;
+  z-index: 999;
 }
 </style>
