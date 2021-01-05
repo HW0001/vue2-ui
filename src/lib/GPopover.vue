@@ -6,7 +6,7 @@
       class="contentWrapper"
       :class="{ [`position-${position}`]: true }"
     >
-      <slot name="content"></slot>
+      <slot name="content" :close="close"></slot>
     </div>
     <span ref="trigger" style="display: inline-block"><slot></slot></span>
   </div>
@@ -129,7 +129,7 @@ export default {
   &::after,
   &::before {
     content: "";
-    display: inline-block;
+    display: block;
     position: absolute;
     border: 10px solid transparent;
   }
