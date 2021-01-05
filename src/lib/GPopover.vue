@@ -27,10 +27,26 @@ export default {
   methods: {
     toggleVisible() {
       this.visible = !this.visible;
-      this.globalEvent();
       this.$nextTick(() => {
         if (this.visible) {
-          const el = this.$refs.contentWrapper;
+         this.positionContent()
+         this.globalEvent();
+        }
+      });
+    },
+    globalEvent() {
+      const handle = (e) => {
+        if (!this.$refs.contentWrapper.contains(e.target)) {
+          this.visible = false;
+          document.removeEventListener("click", handle);
+        }
+      };
+      this.$nextTick(() => {
+        document.addEventListener("click", handle);
+      });
+    },
+    positionContent(){
+         const el = this.$refs.contentWrapper;
           document.body.append(el);
           const top = this.$refs.trigger.offsetTop;
           const left = this.$refs.trigger.offsetLeft;
@@ -58,20 +74,7 @@ export default {
           }
           el.style.left = `${popleft}px`;
           el.style.top = `${poptop}px`;
-        }
-      });
-    },
-    globalEvent() {
-      const handle = (e) => {
-        if (!this.$refs.contentWrapper.contains(e.target)) {
-          this.visible = false;
-          document.removeEventListener("click", handle);
-        }
-      };
-      this.$nextTick(() => {
-        document.addEventListener("click", handle);
-      });
-    },
+    }
   },
 };
 </script>
