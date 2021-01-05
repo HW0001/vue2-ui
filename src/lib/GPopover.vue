@@ -3,7 +3,12 @@
     <div v-if="visible" ref="contentWrapper" class="contentWrapper">
       <slot name="content"></slot>
     </div>
-    <span @click.stop="toggleVisible" ref="trigger"><slot></slot></span>
+    <span
+      @click.stop="toggleVisible"
+      ref="trigger"
+      style="display: inline-block"
+      ><slot></slot
+    ></span>
   </div>
 </template>
 <script>
@@ -11,6 +16,12 @@ export default {
   name: "GPopover",
   props: {
     trigger: {
+      type: String,
+      default: "click",
+      validator: (value) => {
+        return true||["top", "bottom", "left", "right"].indexOf(value) > -1;
+      },
+    },postion: {
       type: String,
       default: "top",
       validator: (value) => {
@@ -57,31 +68,14 @@ export default {
       }
     },
     positionContent() {
-      const el = this.$refs.contentWrapper;
-      document.body.append(el);
-      const top = this.$refs.trigger.offsetTop;
-      const left = this.$refs.trigger.offsetLeft;
-      const { width, height } = this.$refs.trigger.getBoundingClientRect();
-      const { height: popheight, width: popwidth } = el.getBoundingClientRect();
-      let poptop = top - popheight - 8;
-      if (this.trigger === "bottom") {
-        poptop = top + popheight + 8;
-      }
-      if (this.trigger === "top" && poptop < 0) {
-        poptop = top + popheight + 8;
-      } else if (
-        this.trigger === "bottom" &&
-        poptop > document.body.getBoundingClientRect().height
-      ) {
-        poptop = top - popheight - 8;
-      }
-      let popleft = left - popwidth / 2 + width / 2;
-      if (this.trigger === "right") {
-        popleft = left + width + 8;
-        poptop = top;
-      }
-      el.style.left = `${popleft}px`;
-      el.style.top = `${poptop}px`;
+      const contentel = this.$refs.contentWrapper;
+      const triggerel = this.$refs.trigger;
+      document.body.append(contentel);
+      const {width,height,left,top}=triggerel.getBoundingClientRect()
+      let popleft=left+window.scrollX;
+      let poptop=top+window.scrollY;
+      contentel.style.left = `${popleft}px`;
+      contentel.style.top = `${poptop}px`;
     },
   },
 };
@@ -91,5 +85,11 @@ export default {
   position: absolute;
   background: #ffffff;
   z-index: 999;
+  transform: translateY(-100%);
+  padding: .5em 1em;
+  border: 1px solid rgba(0,0,0,.7);
+  border-radius: 4px;
+  box-shadow: 0 0 1px 1px rgba(0,0,0,.25);
+  margin-top: -10px;
 }
 </style>
