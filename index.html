@@ -36,22 +36,44 @@
 
 <body>
     <div id="app">
-        <div style="padding:100px 50px;">
-            <g-popover postion='right'>
-                <template v-slot:content>
-                    <p @click='xxx'>我是测试的哈哈s三调四调所多所多所多收到收到惆怅长岑长碎石随时</p>
-                    <p>也是测试的</p>
-                </template>
-                <g-button>上面</g-button>
-            </g-popover>
-            <g-popover postion='right'>
-                <template v-slot:content>
-                    <p @click='xxx'>我是测试的哈哈s三调四调所多所多所多收到收到惆怅长岑长碎石随时</p>
-                    <p>也是测试的</p>
-                </template>
-                <g-button>下面</g-button>
-            </g-popover>
-            
+        <div style="padding-left: 30px;">
+            <div style="padding-top: 150px;">
+                <g-popover position='top'>
+                    <template v-slot:content>
+                        <p @click='xxx'>我是测试的哈哈s三调四调所多所多所多收到收到惆怅长岑长碎石随时</p>
+                        <p>也是测试的</p>
+                    </template>
+                    <g-button>上面</g-button>
+                </g-popover>
+            </div>
+            <div>
+                <g-popover position='bottom'>
+                    <template v-slot:content>
+                        <p @click='xxx'>我是测试的哈哈s三调四调所多所多所多收到收到惆怅长岑长碎石随时</p>
+                        <p>也是测试的</p>
+                    </template>
+                    <g-button>下面</g-button>
+                </g-popover>
+            </div>
+            <div style="padding-left: 400px;">
+                <g-popover position='left'>
+                    <template v-slot:content>
+                        <p @click='xxx'>我是测试的哈哈s三调四调所多所多所多收到收到惆怅长岑长碎石随时</p>
+                        <p>也是测试的</p>
+                    </template>
+                    <g-button>左边</g-button>
+                </g-popover>
+            </div>
+            <div>
+                <g-popover position='right'>
+                    <template v-slot:content>
+                        <p @click='xxx'>我是测试的哈哈s三调四调所多所多所多收到收到惆怅长岑长碎石随时</p>
+                        <p>也是测试的</p>
+                    </template>
+                    <g-button>右边</g-button>
+                </g-popover>
+            </div>
+
         </div>
         <div>
             <g-tabs :active-key.sync="tabsKey" :item-change='itemChange'>
@@ -131,7 +153,7 @@
                 </g-button-group>
             </div>
         </div>
-   
+
     </div>
     <script src="./src/app.js"></script>
 </body>
