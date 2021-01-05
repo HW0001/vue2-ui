@@ -55,6 +55,9 @@ new Vue({
     itemChange(next,nextkey){
         console.log(nextkey);
         next()
+    },
+    xxx(){
+        console.log('xxx');
     }
   },
 });

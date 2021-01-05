@@ -23,37 +23,18 @@ export default {
       visible: false,
     };
   },
-  mounted() {
-    this.$nextTick(() => {
-      const handle = (e) => {
-        let isUpdaet = true
-        let el = e.target
-        while(el !== null){
-            if(el===this.$refs.contentWrapper){
-                isUpdaet=false
-                el=null
-            }
-            else if(el===document.body){
-                el=null
-            }else{
-                el=el.parentNode
-            }
-        }
-        if (isUpdaet) this.visible = false;
-      };
-      document.addEventListener("click", handle);
-    });
-  },
+  mounted() {},
   methods: {
     toggleVisible() {
       this.visible = !this.visible;
+      this.globalEvent();
       this.$nextTick(() => {
         if (this.visible) {
           const el = this.$refs.contentWrapper;
           document.body.append(el);
           const top = this.$refs.trigger.offsetTop;
           const left = this.$refs.trigger.offsetLeft;
-          const { width,height } = this.$refs.trigger.getBoundingClientRect();
+          const { width, height } = this.$refs.trigger.getBoundingClientRect();
           const {
             height: popheight,
             width: popwidth,
@@ -70,14 +51,25 @@ export default {
           ) {
             poptop = top - popheight - 8;
           }
-          let popleft = left - popwidth / 2 +width/2;
-          if(this.trigger==='right'){
-              popleft=left + width+8
-              poptop=top
+          let popleft = left - popwidth / 2 + width / 2;
+          if (this.trigger === "right") {
+            popleft = left + width + 8;
+            poptop = top;
           }
           el.style.left = `${popleft}px`;
           el.style.top = `${poptop}px`;
         }
+      });
+    },
+    globalEvent() {
+      const handle = (e) => {
+        if (!this.$refs.contentWrapper.contains(e.target)) {
+          this.visible = false;
+          document.removeEventListener("click", handle);
+        }
+      };
+      this.$nextTick(() => {
+        document.addEventListener("click", handle);
       });
     },
   },
