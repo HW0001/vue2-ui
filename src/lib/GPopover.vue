@@ -26,55 +26,63 @@ export default {
   mounted() {},
   methods: {
     toggleVisible() {
-      this.visible = !this.visible;
+      if (this.visible) {
+        this.close();
+      } else {
+        this.open();
+      }
+    },
+    open() {
+      this.visible = true;
       this.$nextTick(() => {
-        if (this.visible) {
-         this.positionContent()
-         this.globalEvent();
-        }
+        this.positionContent();
+        this.onDocumentClick();
       });
     },
-    globalEvent() {
-      const handle = (e) => {
-        if (!this.$refs.contentWrapper.contains(e.target)) {
-          this.visible = false;
-          document.removeEventListener("click", handle);
-        }
-      };
+    close() {
+      this.visible = false;
+      document.removeEventListener("click", this.handle);
+    },
+    onDocumentClick() {
       this.$nextTick(() => {
-        document.addEventListener("click", handle);
+        document.addEventListener("click", this.handle);
       });
     },
-    positionContent(){
-         const el = this.$refs.contentWrapper;
-          document.body.append(el);
-          const top = this.$refs.trigger.offsetTop;
-          const left = this.$refs.trigger.offsetLeft;
-          const { width, height } = this.$refs.trigger.getBoundingClientRect();
-          const {
-            height: popheight,
-            width: popwidth,
-          } = el.getBoundingClientRect();
-          let poptop = top - popheight - 8;
-          if (this.trigger === "bottom") {
-            poptop = top + popheight + 8;
-          }
-          if (this.trigger === "top" && poptop < 0) {
-            poptop = top + popheight + 8;
-          } else if (
-            this.trigger === "bottom" &&
-            poptop > document.body.getBoundingClientRect().height
-          ) {
-            poptop = top - popheight - 8;
-          }
-          let popleft = left - popwidth / 2 + width / 2;
-          if (this.trigger === "right") {
-            popleft = left + width + 8;
-            poptop = top;
-          }
-          el.style.left = `${popleft}px`;
-          el.style.top = `${poptop}px`;
-    }
+    handle(e) {
+      if (
+        this.$refs.contentWrapper &&
+        !this.$refs.contentWrapper.contains(e.target)
+      ) {
+        this.close();
+      }
+    },
+    positionContent() {
+      const el = this.$refs.contentWrapper;
+      document.body.append(el);
+      const top = this.$refs.trigger.offsetTop;
+      const left = this.$refs.trigger.offsetLeft;
+      const { width, height } = this.$refs.trigger.getBoundingClientRect();
+      const { height: popheight, width: popwidth } = el.getBoundingClientRect();
+      let poptop = top - popheight - 8;
+      if (this.trigger === "bottom") {
+        poptop = top + popheight + 8;
+      }
+      if (this.trigger === "top" && poptop < 0) {
+        poptop = top + popheight + 8;
+      } else if (
+        this.trigger === "bottom" &&
+        poptop > document.body.getBoundingClientRect().height
+      ) {
+        poptop = top - popheight - 8;
+      }
+      let popleft = left - popwidth / 2 + width / 2;
+      if (this.trigger === "right") {
+        popleft = left + width + 8;
+        poptop = top;
+      }
+      el.style.left = `${popleft}px`;
+      el.style.top = `${poptop}px`;
+    },
   },
 };
 </script>
