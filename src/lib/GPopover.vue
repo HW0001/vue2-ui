@@ -8,9 +8,7 @@
     >
       <slot name="content"></slot>
     </div>
-    <span @click="toggleVisible" ref="trigger" style="display: inline-block"
-      ><slot></slot
-    ></span>
+    <span ref="trigger" style="display: inline-block"><slot></slot></span>
   </div>
 </template>
 <script>
@@ -21,7 +19,7 @@ export default {
       type: String,
       default: "click",
       validator: (value) => {
-        return true || ["top", "bottom", "left", "right"].indexOf(value) > -1;
+        return ["click", "hover"].indexOf(value) > -1;
       },
     },
     position: {
@@ -37,7 +35,14 @@ export default {
       visible: false,
     };
   },
-  mounted() {},
+  mounted() {
+    if (this.trigger === "click") {
+      this.$refs.trigger.addEventListener("click", this.toggleVisible);
+    } else {
+      this.$refs.trigger.addEventListener("mouseenter", this.open);
+      document.addEventListener("mousemove", this.hoverHandle);
+    }
+  },
   methods: {
     toggleVisible() {
       if (this.visible) {
@@ -55,18 +60,28 @@ export default {
     },
     close() {
       this.visible = false;
-      document.removeEventListener("click", this.handle);
+      document.removeEventListener("click", this.clickHandle);
     },
     onDocumentClick() {
       this.$nextTick(() => {
-        document.addEventListener("click", this.handle);
+        document.addEventListener("click", this.clickHandle);
       });
     },
-    handle(e) {
+    clickHandle(e) {
       if (this.$refs.contentWrapper.contains(e.target)) {
       } else if (this.$refs.trigger.contains(e.target)) {
       } else {
         this.close();
+      }
+    },
+    hoverHandle(e) {
+      if (this.$refs.trigger && this.$refs.contentWrapper) {
+        if (
+          !this.$refs.trigger.contains(e.target) &&
+          !this.$refs.contentWrapper.contains(e.target)
+        ) {
+          this.close();
+        }
       }
     },
     positionContent() {
@@ -74,23 +89,29 @@ export default {
       const triggerel = this.$refs.trigger;
       document.body.append(contentel);
       const { width, height, left, top } = triggerel.getBoundingClientRect();
-      const { width:contentWidth, height:contentHegiht} = contentel.getBoundingClientRect();
+      const {
+        width: contentWidth,
+        height: contentHegiht,
+      } = contentel.getBoundingClientRect();
       let popleft = left + window.scrollX;
       let poptop = top + window.scrollY;
       if (this.position === "bottom") {
-        poptop = top + window.scrollY+height;
-      }else if(this.position==='left'){
-          popleft=left+window.scrollX-contentWidth
-          poptop = top + window.scrollY-(contentHegiht-height)/2;
-      }else if(this.position==='right'){
-          popleft=left+window.scrollX+width
-          poptop = top + window.scrollY-(contentHegiht-height)/2;
+        poptop = top + window.scrollY + height;
+      } else if (this.position === "left") {
+        popleft = left + window.scrollX - contentWidth;
+        poptop = top + window.scrollY - (contentHegiht - height) / 2;
+      } else if (this.position === "right") {
+        popleft = left + window.scrollX + width;
+        poptop = top + window.scrollY - (contentHegiht - height) / 2;
       }
       console.log(contentHegiht);
       contentel.style.left = `${popleft}px`;
       contentel.style.top = `${poptop}px`;
     },
   },
+  destroyed(){
+      document.removeEventListener("mousemove",this.hoverHandle)
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -125,7 +146,7 @@ export default {
     }
   }
   &.position-bottom {
-      margin-top: 10px;
+    margin-top: 10px;
     &::after {
       border-bottom-color: white;
       bottom: calc(100% - 1px);
@@ -135,8 +156,8 @@ export default {
       bottom: 100%;
     }
   }
-    &.position-left {
-        margin-left: -10px;
+  &.position-left {
+    margin-left: -10px;
     &::after {
       border-left-color: white;
       left: calc(100% - 1px);
@@ -150,8 +171,8 @@ export default {
       transform: translateY(-50%);
     }
   }
-      &.position-right {
-          margin-left: 10px;
+  &.position-right {
+    margin-left: 10px;
     &::after {
       border-right-color: white;
       right: calc(100% - 1px);
