@@ -104,7 +104,6 @@ export default {
         popleft = left + window.scrollX + width;
         poptop = top + window.scrollY - (contentHegiht - height) / 2;
       }
-      console.log(contentHegiht);
       contentel.style.left = `${popleft}px`;
       contentel.style.top = `${poptop}px`;
     },
