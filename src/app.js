@@ -14,6 +14,8 @@ import GToast from "./lib/GToast-plugin";
 import GTabs from "./lib/GTabs";
 import GTabItem from "./lib/GTabItem";
 import GPopover from "./lib/GPopover";
+import GCollapse from "./lib/GCollapse";
+import GCollapseItem from "./lib/GCollapseItem";
 
 Vue.component("g-button", GButton);
 Vue.component("g-icon", GIcon);
@@ -29,6 +31,8 @@ Vue.component("g-footer", GFooter);
 Vue.component("g-tabs", GTabs);
 Vue.component("g-tab-item", GTabItem);
 Vue.component("g-popover", GPopover);
+Vue.component("g-collapse", GCollapse);
+Vue.component("g-collapse-item", GCollapseItem);
 
 Vue.use(GToast);
 
