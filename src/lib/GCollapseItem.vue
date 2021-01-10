@@ -1,11 +1,19 @@
 <template>
-  <div class="g-collapse-item" :class="itemClasses">
+  <div class="g-collapse-item">
     <div class="g-collapse-item-title" @click="itemClick">
       <span>{{ title }}</span>
     </div>
-      <div class="g-collapse-item-content" :class="{visible:visible}">
-        <div><slot></slot></div>
+    <transition
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @leave="leave"
+      @after-leave="afterLeave"
+    >
+      <div class="g-collapse-item-content" v-show="visible">
+        <slot></slot>
       </div>
+    </transition>
   </div>
 </template>
 <script>
@@ -23,21 +31,26 @@ export default {
     itemClick() {
       this.visible = !this.visible;
     },
-  },
-  computed: {
-    itemClasses() {
-      return {
-        active: this.visible,
-      };
+    beforeEnter(el) {
+      el.style.height = 0;
     },
+    enter(el, done) {
+      let height = el.scrollHeight;
+      el.style.transition = "height .3s ease-in-out";
+      el.style.height = `${height}px`;
+      el.addEventListener("transitionend", () => {
+        done();
+      });
+    },
+    afterEnter(el) {},
+    leave(el, done) {
+      el.style.height = 0;
+      el.addEventListener("transitionend", () => {
+        done();
+      });
+    },
+    afterLeave(el) {},
   },
-  watch:{
-      visible(val){
-        if(val){
-            
-        }
-      }
-  }
 };
 </script>
 <style lang="scss" scoped>
@@ -50,11 +63,9 @@ export default {
     cursor: pointer;
   }
   > .g-collapse-item-content {
-    padding-top: 0.5em;
-    padding-bottom: 1em;
     overflow: hidden;
     will-change: height;
-}
+  }
   &.active {
     > .g-collapse-item-title {
       border-bottom: none;
@@ -62,19 +73,6 @@ export default {
     > .g-collapse-item-content {
       border-bottom: 1px solid $border-color;
     }
-  }
-  .visible{
-      animation:  fade-in .3s ease-in-out;
-      transform-origin: center top;
-  }
-  @keyframes fade-in {
-      0%{
-          height: 0;
-      }
-      100%{
-          height: 40px;
-          display: block;
-      }
   }
 }
 </style>

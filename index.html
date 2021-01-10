@@ -1,169 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        :root {
-            font-size: 14px;
-        }
+      :root {
+        font-size: 14px;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        #app {
-            padding-left: 10px;
-        }
+      #app {
+        padding-left: 10px;
+      }
 
-        .box>button {
-            margin-bottom: 10px;
-        }
+      .box > button {
+        margin-bottom: 10px;
+      }
 
-        .space {
-            height: 10px;
-        }
+      .space {
+        height: 10px;
+      }
 
-        .col-wrap {
-            border: 1px solid black;
-        }
+      .col-wrap {
+        border: 1px solid black;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="app">
-        <div>
-            <g-collapse>
-                <g-collapse-item title='第一个'>这是第一个标签的内容</g-collapse-item>
-                <g-collapse-item title='第二个'>这是第二个标签的内容</g-collapse-item>
-                <g-collapse-item title='第三个'>这是第三个标签的内容</g-collapse-item>
-            </g-collapse>
-        </div>
-        <div style="padding-left: 30px;">
-            <div style="padding-top: 150px;">
-                <g-popover position='top'>
-                    <template v-slot:content="{close}">
-                        <p @click='xxx'>我是测试的哈哈s三调四调所多所多所多收到收到惆怅长岑长碎石随时</p>
-                        <p>也是测试的</p>
-                        <g-button @click='close'>关闭</g-button>
-                    </template>
-                    <g-button>上面</g-button>
-                </g-popover>
-            </div>
-            <div>
-                <g-popover position='bottom' trigger='hover'>
-                    <template v-slot:content>
-                        <p @click='xxx'>我是测试的哈哈s三调四调所多所多所多收到收到惆怅长岑长碎石随时</p>
-                        <p>也是测试的</p>
-                    </template>
-                    <g-button>下面</g-button>
-                </g-popover>
-            </div>
-            <div style="padding-left: 400px;">
-                <g-popover position='left' trigger='hover'>
-                    <template v-slot:content>
-                        <p @click='xxx'>我是测试的哈哈s三调四调所多所多所多收到收到惆怅长岑长碎石随时</p>
-                        <p>也是测试的</p>
-                    </template>
-                    <g-button>左边</g-button>
-                </g-popover>
-            </div>
-            <div>
-                <g-popover position='right'>
-                    <template v-slot:content>
-                        <p @click='xxx'>我是测试的哈哈s三调四调所多所多所多收到收到惆怅长岑长碎石随时</p>
-                        <p>也是测试的</p>
-                    </template>
-                    <g-button>右边</g-button>
-                </g-popover>
-            </div>
-
+      <div>
+        <g-collapse>
+          <g-collapse-item title="第一个">
+            <p>这是第一个标签的内容</p>
+            <p>这是第一个标签的内容</p>
+            <p>这是第一个标签的内容</p>
+            <p>这是第一个标签的内容</p>
+          </g-collapse-item>
+          <g-collapse-item title="第二个">这是第二个标签的内容</g-collapse-item>
+          <g-collapse-item title="第三个">这是第三个标签的内容</g-collapse-item>
+        </g-collapse>
+      </div>
+      <div style="padding-left: 30px;">
+        <div style="padding-top: 150px;">
+          <g-popover position="top">
+            <template v-slot:content="{close}">
+              <p @click="xxx">
+                我是测试的哈哈s三调四调所多所多所多收到收到惆怅长岑长碎石随时
+              </p>
+              <p>也是测试的</p>
+              <g-button @click="close">关闭</g-button>
+            </template>
+            <g-button>上面</g-button>
+          </g-popover>
         </div>
         <div>
-            <g-tabs :active-key.sync="tabsKey" :item-change='itemChange'>
-                <g-tab-item title='一www' item-key='1' disabled>测试1</g-tab-item>
-                <g-tab-item title='二的' item-key='2'>测试2</g-tab-item>
-                <g-tab-item title='三是是是' item-key='3'>测试3</g-tab-item>
-            </g-tabs>
+          <g-popover position="bottom" trigger="hover">
+            <template v-slot:content>
+              <p @click="xxx">
+                我是测试的哈哈s三调四调所多所多所多收到收到惆怅长岑长碎石随时
+              </p>
+              <p>也是测试的</p>
+            </template>
+            <g-button>下面</g-button>
+          </g-popover>
+        </div>
+        <div style="padding-left: 400px;">
+          <g-popover position="left" trigger="hover">
+            <template v-slot:content>
+              <p @click="xxx">
+                我是测试的哈哈s三调四调所多所多所多收到收到惆怅长岑长碎石随时
+              </p>
+              <p>也是测试的</p>
+            </template>
+            <g-button>左边</g-button>
+          </g-popover>
         </div>
         <div>
-            <button @click="toastClick">点我</button>
+          <g-popover position="right">
+            <template v-slot:content>
+              <p @click="xxx">
+                我是测试的哈哈s三调四调所多所多所多收到收到惆怅长岑长碎石随时
+              </p>
+              <p>也是测试的</p>
+            </template>
+            <g-button>右边</g-button>
+          </g-popover>
         </div>
-        <hr />
-        <g-layout style="height: 400px;">
-            <g-header>header</g-header>
-            <g-layout>
-                <g-sider>sider</g-sider>
-                <g-main>main</g-main>
-            </g-layout>
-            <g-footer>footer</g-footer>
+      </div>
+      <div>
+        <g-tabs :active-key.sync="tabsKey" :item-change="itemChange">
+          <g-tab-item title="一www" item-key="1" disabled>测试1</g-tab-item>
+          <g-tab-item title="二的" item-key="2">测试2</g-tab-item>
+          <g-tab-item title="三是是是" item-key="3">测试3</g-tab-item>
+        </g-tabs>
+      </div>
+      <div>
+        <button @click="toastClick">点我</button>
+      </div>
+      <hr />
+      <g-layout style="height: 400px;">
+        <g-header>header</g-header>
+        <g-layout>
+          <g-sider>sider</g-sider>
+          <g-main>main</g-main>
         </g-layout>
-        <hr />
-        <g-row align="center">
-            <g-col span="2" :lg="{span:7,offset:2}" :xl="{span:12}" :xxl="{span:15}">
-                <div class="col-wrap">1</div>
-            </g-col>
-            <g-col span="22" :lg="{span:15}" :xl="{span:12}" :xxl="{span:9}">
-                <div class="col-wrap">1</div>
-            </g-col>
+        <g-footer>footer</g-footer>
+      </g-layout>
+      <hr />
+      <g-row align="center">
+        <g-col
+          span="2"
+          :lg="{span:7,offset:2}"
+          :xl="{span:12}"
+          :xxl="{span:15}"
+        >
+          <div class="col-wrap">1</div>
+        </g-col>
+        <g-col span="22" :lg="{span:15}" :xl="{span:12}" :xxl="{span:9}">
+          <div class="col-wrap">1</div>
+        </g-col>
+      </g-row>
+      <hr />
+      <div class="box">
+        <g-row gutter="20">
+          <g-col>1</g-col>
+          <g-col>2</g-col>
         </g-row>
+        <g-row gutter="20">
+          <g-col>1</g-col>
+          <g-col>2</g-col>
+          <g-col>3</g-col>
+        </g-row>
+        <g-row>
+          <g-col span="4">1</g-col>
+          <g-col span="8">2</g-col>
+          <g-col span="12">3</g-col>
+        </g-row>
+        <g-row gutter="20">
+          <g-col span="4">1</g-col>
+          <g-col span="8">2</g-col>
+          <g-col span="10" offset="2">3</g-col>
+        </g-row>
+      </div>
+      <hr />
+      <div class="box">
+        <span>这是一个标签</span>
+        <g-input value="今天天气不错" @change="changes"></g-input>
         <hr />
-        <div class="box">
-            <g-row gutter="20">
-                <g-col>1</g-col>
-                <g-col>2</g-col>
-            </g-row>
-            <g-row gutter="20">
-                <g-col>1</g-col>
-                <g-col>2</g-col>
-                <g-col>3</g-col>
-            </g-row>
-            <g-row>
-                <g-col span="4">1</g-col>
-                <g-col span="8">2</g-col>
-                <g-col span="12">3</g-col>
-            </g-row>
-            <g-row gutter="20">
-                <g-col span="4">1</g-col>
-                <g-col span="8">2</g-col>
-                <g-col span="10" offset="2">3</g-col>
-            </g-row>
+        <g-input value="今天天气不错" readonly></g-input>
+        <hr />
+        <g-input value="今天天气不错" disabled></g-input>
+      </div>
+      <hr />
+      <g-input value="今天天气不错" error="填写的信息有问题"></g-input>
+      <hr />
+      <g-input v-model="mess"></g-input>{{mess}}
+      <hr />
+      <div class="box">
+        <g-button>按钮</g-button>
+        <g-button icon="download" icon-position="right">按钮</g-button>
+        <g-button icon="setting">按钮</g-button>
+        <g-button icon="setting" loading>按钮</g-button>
+        <g-button icon="setting" icon-position="right" loading>按钮</g-button>
+        <div>
+          <g-button-group>
+            <g-button icon="left">前进</g-button>
+            <g-button>更多</g-button>
+            <g-button icon="right" icon-position="right">退后</g-button>
+          </g-button-group>
         </div>
-        <hr />
-        <div class="box">
-            <span>这是一个标签</span>
-            <g-input value="今天天气不错" @change="changes"></g-input>
-            <hr />
-            <g-input value="今天天气不错" readonly></g-input>
-            <hr />
-            <g-input value="今天天气不错" disabled></g-input>
-        </div>
-        <hr />
-        <g-input value="今天天气不错" error="填写的信息有问题"></g-input>
-        <hr />
-        <g-input v-model="mess"></g-input>{{mess}}
-        <hr />
-        <div class="box">
-            <g-button>按钮</g-button>
-            <g-button icon="download" icon-position="right">按钮</g-button>
-            <g-button icon="setting">按钮</g-button>
-            <g-button icon="setting" loading>按钮</g-button>
-            <g-button icon="setting" icon-position="right" loading>按钮</g-button>
-            <div>
-                <g-button-group>
-                    <g-button icon="left">前进</g-button>
-                    <g-button>更多</g-button>
-                    <g-button icon="right" icon-position="right">退后</g-button>
-                </g-button-group>
-            </div>
-        </div>
-
+      </div>
     </div>
     <script src="./src/app.js"></script>
-</body>
-
+  </body>
 </html>
