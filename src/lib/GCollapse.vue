@@ -19,11 +19,8 @@ export default {
    }
   },
   methods:{
-     addItem(x) {
-      console.log(x);
-    },
     removeItem(key){
-      const index = this.selected.indexOf(key)
+    const index = this.selected.indexOf(key)
     index>-1 && this.selected.splice(index,1)
     this.notify()
     },
@@ -45,13 +42,11 @@ export default {
 <style lang="scss" scoped>
 .g-collapse {
   padding: 1em 1em;
-  border: 1px solid #ebebeb;
+  border: 1px solid #999;
   border-radius: 4px;
   padding: 1em;
-  >div:first-child{
-      >div:not(:first-child){
+  >div:not(:first-child){
           margin-top: -1px;
       }
-  }
 }
 </style>

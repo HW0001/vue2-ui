@@ -1,6 +1,6 @@
 <template>
   <div class="g-collapse-item">
-    <div class="g-collapse-item-title" @click="itemClick">
+    <div class="g-collapse-item-title" @click="itemClick" ref="title">
       <span>{{ title }}</span>
     </div>
     <transition
@@ -47,6 +47,7 @@ export default {
       el.style.height = 0;
     },
     enter(el, done) {
+      this.$refs.title.style.borderBottom = "none";
       let height = el.scrollHeight;
       el.style.transition = "height .3s ease-in-out";
       el.style.height = `${height}px`;
@@ -54,14 +55,18 @@ export default {
         done();
       });
     },
-    afterEnter(el) {},
+    afterEnter(el) {
+      el.style.borderBottom = "1px solid #999";
+    },
     leave(el, done) {
       el.style.height = 0;
       el.addEventListener("transitionend", () => {
         done();
       });
     },
-    afterLeave(el) {},
+    afterLeave(el) {
+      this.$refs.title.style.borderBottom = "1px solid #999";
+    },
   },
   mounted() {
     this.eventBus.$on("collapseSelected", (selected) => {
@@ -72,7 +77,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .g-collapse-item {
-  $border-color: #ebebeb;
+  $border-color: #999;
   > .g-collapse-item-title {
     border-top: 1px solid $border-color;
     border-bottom: 1px solid $border-color;
