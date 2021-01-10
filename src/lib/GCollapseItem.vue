@@ -20,8 +20,16 @@
 export default {
   name: "GCollapseItem",
   props: {
-    title: String,
+    title: {
+      type: String,
+      required: true,
+    },
+    itemKey: {
+      type: String || Number,
+      required: true,
+    },
   },
+  inject: ["eventBus"],
   data() {
     return {
       visible: false,
@@ -29,7 +37,11 @@ export default {
   },
   methods: {
     itemClick() {
-      this.visible = !this.visible;
+      if (this.visible) {
+        this.eventBus.$emit("removeItem", this.itemKey);
+      } else {
+        this.eventBus.$emit("addItem", this.itemKey);
+      }
     },
     beforeEnter(el) {
       el.style.height = 0;
@@ -50,6 +62,11 @@ export default {
       });
     },
     afterLeave(el) {},
+  },
+  mounted() {
+    this.eventBus.$on("collapseSelected", (selected) => {
+      this.visible = selected.indexOf(this.itemKey) > -1;
+    });
   },
 };
 </script>

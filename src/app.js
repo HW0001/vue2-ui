@@ -40,28 +40,31 @@ new Vue({
   el: "#app",
   data: {
     mess: "hi",
-    tabsKey:"2"
+    tabsKey: "2",
+    cols: ["1", "2"],
   },
   methods: {
     changes(e) {
       console.log(e);
     },
     toastClick() {
-      this.$toast("这是一个toast"+Math.random()*100, {
+      this.$toast("这是一个toast" + Math.random() * 100, {
         autoClose: true,
-        autoCloseDelay:2,
+        autoCloseDelay: 2,
         showClose: true,
         useHtml: false,
-        position:"top",
-        closeCallBack:function(){console.log("我关闭了")}
+        position: "top",
+        closeCallBack: function() {
+          console.log("我关闭了");
+        },
       });
     },
-    itemChange(next,nextkey){
-        console.log(nextkey);
-        next()
+    itemChange(next, nextkey) {
+      console.log(nextkey);
+      next();
     },
-    xxx(){
-        console.log('xxx');
-    }
+    xxx() {
+      console.log("xxx");
+    },
   },
 });

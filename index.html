@@ -36,15 +36,19 @@
   <body>
     <div id="app">
       <div>
-        <g-collapse>
-          <g-collapse-item title="第一个">
+        <g-collapse :selected="cols">
+          <g-collapse-item title="第一个" item-key="1">
             <p>这是第一个标签的内容</p>
             <p>这是第一个标签的内容</p>
             <p>这是第一个标签的内容</p>
             <p>这是第一个标签的内容</p>
           </g-collapse-item>
-          <g-collapse-item title="第二个">这是第二个标签的内容</g-collapse-item>
-          <g-collapse-item title="第三个">这是第三个标签的内容</g-collapse-item>
+          <g-collapse-item title="第二个" item-key="2"
+            >这是第二个标签的内容</g-collapse-item
+          >
+          <g-collapse-item title="第三个" item-key="3"
+            >这是第三个标签的内容</g-collapse-item
+          >
         </g-collapse>
       </div>
       <div style="padding-left: 30px;">
