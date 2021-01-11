@@ -56,7 +56,7 @@ export default {
       });
     },
     afterEnter(el) {
-      el.style.borderBottom = "1px solid #999";
+      el.style.borderBottom = "1px solid rgba(153,153,153,.4)";
     },
     leave(el, done) {
       el.style.height = 0;
@@ -65,7 +65,7 @@ export default {
       });
     },
     afterLeave(el) {
-      this.$refs.title.style.borderBottom = "1px solid #999";
+      this.$refs.title.style.borderBottom = "1px solid rgba(153,153,153,.4)";
     },
   },
   mounted() {
