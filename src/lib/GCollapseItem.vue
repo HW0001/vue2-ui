@@ -70,7 +70,7 @@ export default {
   },
   mounted() {
     this.eventBus.$on("collapseSelected", (selected) => {
-      this.visible = selected.indexOf(this.itemKey) > -1;
+      this.visible = selected ===this.itemKey || selected.indexOf(this.itemKey) > -1;
     });
   },
 };
@@ -81,7 +81,7 @@ export default {
   > .g-collapse-item-title {
     border-top: 1px solid $border-color;
     border-bottom: 1px solid $border-color;
-    padding: 1em 0;
+    padding: .5em 0;
     cursor: pointer;
   }
   > .g-collapse-item-content {

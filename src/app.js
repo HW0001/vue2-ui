@@ -41,7 +41,7 @@ new Vue({
   data: {
     mess: "hi",
     tabsKey: "2",
-    cols: ["1", "2"],
+    cols: [ "2"],
   },
   methods: {
     changes(e) {
