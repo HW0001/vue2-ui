@@ -60,7 +60,7 @@ export default {
 <style lang="scss" scoped>
 .g-collapse {
   padding: 1em 1em;
-  border: 1px solid #999;
+  border: 1px solid  rgba(153,153,153,.3);;
   border-radius: 4px;
   padding: 1em;
   > div:not(:first-child) {

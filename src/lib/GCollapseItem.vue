@@ -77,7 +77,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .g-collapse-item {
-  $border-color: #999;
+  $border-color: rgba(153,153,153,.4);
   > .g-collapse-item-title {
     border-top: 1px solid $border-color;
     border-bottom: 1px solid $border-color;
