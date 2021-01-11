@@ -7,7 +7,8 @@ import Vue from 'vue'
 export default {
   name: "GCollapse",
   props:{
-    selected:Array
+    selected:Array,
+    single:{type:Boolean,default:true}
   },
   data(){
     return {
