@@ -1,13 +1,14 @@
 <template>
   <div class="g-collapse"  @addItem="addItem">
     <slot></slot>
+  </div>
 </template>
 <script>
 import Vue from "vue";
 export default {
   name: "GCollapse",
   props: {
-    selected: Array | String,
+    selected: {type:Array | String,default:''},
     mulitple: { type: Boolean, default: false },
   },
   data() {

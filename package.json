@@ -10,7 +10,7 @@
     "test": "rm -rf .cache dist && parcel build test/* --no-minify && karma start --single-run",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
-},
+  },
   "keywords": [
     "vue",
     "ui"
@@ -34,6 +34,7 @@
     "mocha": "^8.2.1",
     "parcel-bundler": "^1.12.4",
     "sass": "^1.29.0",
+    "sass-loader": "^10.1.1",
     "sinon": "^9.2.1",
     "sinon-chai": "^3.5.0",
     "vue-template-compiler": "^2.6.12",

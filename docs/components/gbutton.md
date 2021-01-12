@@ -2,4 +2,4 @@
 title: button
 ---
 
-# 这是按钮
+<gbuttondemo></gbuttondemo>
