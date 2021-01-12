@@ -3,12 +3,14 @@
   "version": "0.0.1",
   "description": "创建项目并增加button",
   "main": "index.js",
-  "scripts": { 
-    "start":"parcel index.html --no-cache",
+  "scripts": {
+    "start": "parcel index.html --no-cache",
     "dev-test1": " parcel watch test/* --no-cache ",
     "dev-test2": " karma start ",
-    "test": "rm -rf .cache dist && parcel build test/* --no-minify && karma start --single-run"
-  },
+    "test": "rm -rf .cache dist && parcel build test/* --no-minify && karma start --single-run",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+},
   "keywords": [
     "vue",
     "ui"
@@ -34,7 +36,8 @@
     "sass": "^1.29.0",
     "sinon": "^9.2.1",
     "sinon-chai": "^3.5.0",
-    "vue-template-compiler": "^2.6.12"
+    "vue-template-compiler": "^2.6.12",
+    "vuepress": "^1.8.0"
   },
   "alias": {
     "vue": "./node_modules/vue/dist/vue.common.js"
