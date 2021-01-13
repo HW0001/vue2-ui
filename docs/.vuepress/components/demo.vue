@@ -32,5 +32,8 @@ export default {
   display: flex;
   justify-content: center;
   align-content: center;
+  >div:first-child{
+      width: 100%;
+  }
 }
 </style>

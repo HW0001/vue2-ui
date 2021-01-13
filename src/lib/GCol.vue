@@ -7,7 +7,7 @@
 export default {
   name: "GCol",
   props: {
-    span: [Number, String],
+    span: {type:Number|String,default:24},
     offset: [Number, String],
     sm: { type: Object },
     md: { type: Object },
@@ -53,6 +53,7 @@ $class-prefix: span_;
 @for $n from 1 through 24 {
   .#{$class-prefix}#{$n} {
     width: ($n/24) * 100%;
+    box-sizing: border-box;
   }
 }
 $class-prefix: offset_;

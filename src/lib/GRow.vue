@@ -40,6 +40,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 20px;
+  box-sizing: border-box;
   &.g-row-left {
     justify-content: flex-start;
   }
