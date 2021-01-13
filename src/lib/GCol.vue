@@ -7,7 +7,7 @@
 export default {
   name: "GCol",
   props: {
-    span: {type:Number|String,default:24},
+    span: { type: Number | String, default: 24 },
     offset: [Number, String],
     sm: { type: Object },
     md: { type: Object },
@@ -26,16 +26,11 @@ export default {
       return [
         span && `span_${span}`,
         offset && `offset_${offset}`,
-        sm && sm.span && "col_sm_" + sm.span,
-        sm && sm.offset && "col_sm_offset_" + sm.offset,
-        md && md.span && "col_md_" + md.span,
-        md && md.offset && "col_md_offset_" + md.offset,
-        lg && lg.span && "col_lg_" + lg.span,
-        lg && lg.offset && "col_lg_offset_" + lg.offset,
-        xl && xl.span && "col_xl_" + xl.span,
-        xl && xl.offset && "col_xl_offset_" + xl.offset,
-        xxl && xxl.span && "col_xxl_" + xxl.span,
-        xxl && xxl.offset && "col_xxl_offset_" + xxl.offset,
+        ...this.getSpanAndOffset("sm", sm),
+        ...this.getSpanAndOffset("md", md),
+        ...this.getSpanAndOffset("lg", lg),
+        ...this.getSpanAndOffset("xl", xl),
+        ...this.getSpanAndOffset("xxl", xxl),
       ];
     },
     colStyle() {
@@ -44,6 +39,19 @@ export default {
         paddingLeft: gutter / 2 + "px",
         paddingRight: gutter / 2 + "px",
       };
+    },
+  },
+  methods: {
+    getSpanAndOffset(name, obj) {
+      const result = [];
+      if (obj) {
+        if (obj.span) result.push("col_" + name + "_" + obj.span);
+        if (obj.offset) result.push("col_" + name + "_offset_" + obj.offset);
+        else result.push("col_" + name + "_offset_" + 0);
+        return result;
+      } else {
+        return [];
+      }
     },
   },
 };
@@ -71,8 +79,11 @@ $class-prefix: offset_;
     $class-prefix: col_sm_offset_;
     @for $n from 1 through 24 {
       .#{$class-prefix}#{$n} {
-        width: ($n/24) * 100%;
+        margin-left: ($n/24) * 100%;
       }
+    }
+    .col_sm_offset_0 {
+      margin-left: 0;
     }
   }
   @media (min-width: 768px) {
@@ -85,8 +96,11 @@ $class-prefix: offset_;
     $class-prefix: col_md_offset_;
     @for $n from 1 through 24 {
       .#{$class-prefix}#{$n} {
-        width: ($n/24) * 100%;
+        margin-left: ($n/24) * 100%;
       }
+    }
+    .col_md_offset_0 {
+      margin-left: 0;
     }
   }
   @media (min-width: 992px) {
@@ -99,8 +113,11 @@ $class-prefix: offset_;
     $class-prefix: col_lg_offset_;
     @for $n from 1 through 24 {
       .#{$class-prefix}#{$n} {
-        width: ($n/24) * 100%;
+        margin-left: ($n/24) * 100%;
       }
+    }
+    .col_lg_offset_0 {
+      margin-left: 0;
     }
   }
   @media (min-width: 1200px) {
@@ -113,8 +130,11 @@ $class-prefix: offset_;
     $class-prefix: col_xl_offset_;
     @for $n from 1 through 24 {
       .#{$class-prefix}#{$n} {
-        width: ($n/24) * 100%;
+        margin-left: ($n/24) * 100%;
       }
+    }
+    .col_xl_offset_0 {
+      margin-left: 0;
     }
   }
   @media (min-width: 1600px) {
@@ -127,8 +147,11 @@ $class-prefix: offset_;
     $class-prefix: col_xxl_offset_;
     @for $n from 1 through 24 {
       .#{$class-prefix}#{$n} {
-        width: ($n/24) * 100%;
+        margin-left: ($n/24) * 100%;
       }
+    }
+    .col_xxl_offset_0 {
+      margin-left: 0;
     }
   }
 }
