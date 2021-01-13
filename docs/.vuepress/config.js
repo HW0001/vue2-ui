@@ -16,7 +16,7 @@ module.exports = {
         children: [
             "/components/gbutton",
             "/components/ginput",
-            "/components/glayout",
+            "/components/grid",
         ],
       },
     ],
