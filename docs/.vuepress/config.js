@@ -14,9 +14,10 @@ module.exports = {
         collapsable: true, // 可选的, 默认值是 true,
         sidebarDepth: 1, // 可选的, 默认值是 1
         children: [
-            "/components/gbutton",
-            "/components/ginput",
-            "/components/grid",
+          "/components/gbutton",
+          "/components/ginput",
+          "/components/grid",
+          "/components/layout",
         ],
       },
     ],
