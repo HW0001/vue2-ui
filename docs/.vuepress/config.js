@@ -17,6 +17,7 @@ module.exports = {
             "/components/gbutton",
             "/components/ginput",
             "/components/grid",
+            "/components/layout",
         ],
       },
     ],

@@ -2,7 +2,7 @@
   <transition name="fade">
     <aside class="g-sider" v-if="visiable">
       <slot></slot>
-      <button @click="toggle">关闭</button>
+      <button v-if="false" @click="toggle">关闭</button>
     </aside>
   </transition>
 </template>
