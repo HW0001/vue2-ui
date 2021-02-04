@@ -1,0 +1,14 @@
+node_modules/
+.cache/
+dist/
+docs/
+test/
+app.js
+.gitignore
+index.html
+debug.log
+.travis.yml
+karma.config.js
+package-lock.json
+package.json
+README.MD

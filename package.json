@@ -1,7 +1,7 @@
 {
   "name": "gui-custom",
   "version": "0.0.1",
-  "description": "创建项目并增加button",
+  "description": "完成基本组件",
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html --no-cache",
