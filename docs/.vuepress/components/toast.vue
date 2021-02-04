@@ -48,30 +48,3 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
-.layout {
-  height: 300px;
-  .header {
-    height: 20px;
-    border: 1px solid black;
-    line-height: 20px;
-    text-align: center;
-  }
-  .sider {
-    width: 20%;
-    border: 1px solid black;
-    margin-top: -1px;
-  }
-  .main {
-    border: 1px solid black;
-    margin: -1px 0 0 -1px;
-  }
-  .footer {
-    height: 50px;
-    border: 1px solid black;
-    margin-top: -1px;
-    line-height: 50px;
-    text-align: center;
-  }
-}
-</style>
