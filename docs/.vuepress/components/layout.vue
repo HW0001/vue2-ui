@@ -1,6 +1,6 @@
 <template>
   <div>
-    <demo :code="code" title="输入框">
+    <demo :code="code" title="页面布局">
       <g-layout class="layout">
         <g-header class="header">header</g-header>
         <g-layout>

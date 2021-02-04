@@ -18,6 +18,7 @@ module.exports = {
             "/components/ginput",
             "/components/grid",
             "/components/layout",
+            "/components/toast",
         ],
       },
     ],

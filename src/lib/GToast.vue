@@ -84,6 +84,7 @@ export default {
 .g-toast {
   position: fixed;
   left: 50%;
+  z-index: 9999;
   transform: translateX(-50%);
   background-color: #fff;
   display: flex;
