@@ -16,8 +16,6 @@ import GTabs from "./src/lib/GTabs";
 import GTabItem from "./src/lib/GTabItem";
 import GToastplugin from "./src/lib/GToast-plugin";
 import GToast from "./src/lib/GToast";
-import './src/lib/scsshelper'
-
 export { GButton, GButtonGroup, 
     GIcon,GCollapse,GCollapseItem,GHeader,GFooter,GSider,GLayout,
     GMain,GCol,GRow,GInput,GPopover,GTabs,GTabItem,GToastplugin,GToast
