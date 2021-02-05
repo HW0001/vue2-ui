@@ -26,7 +26,7 @@ export default {
         },
     });
           `,
-          tip:`注：使用前需引用 GToast-plugin插件，再使用Vue.use(GToast),将$toast挂载至vue实例中`
+          tip:`注：使用前需引用 GToast-plugin插件，再使用Vue.use(GToast-plugin),将$toast挂载至vue实例中`
     };
   },
   components: {
