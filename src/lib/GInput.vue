@@ -36,7 +36,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "./scsshelper.scss";
 .ginput-wrapping {
   display: inline-flex;
   align-items: center;
@@ -55,12 +54,12 @@ export default {
     display: inline-block;
     &:focus {
       outline: none;
-      border-color: $focus-color;
-      box-shadow: inset 0 -2px 2px -2px $focus-color;
+      border-color: rgb(64, 169, 255);
+      box-shadow: inset 0 -2px 2px -2px rgb(64, 169, 255);
       transition: all 0.5s;
     }
     &:hover {
-      border-color: $active-color;
+      border-color: rgb(80, 151, 228);
       transition: all 0.5s;
     }
     &[disabled] {
@@ -69,13 +68,13 @@ export default {
     }
   }
   &.error > input {
-    border-color: $error-color;
+    border-color: red;
   }
   .icon-error {
-    fill: $error-color;
+    fill: red;
   }
   .span-error {
-    color: $error-color;
+    color: red;
   }
 }
 </style>

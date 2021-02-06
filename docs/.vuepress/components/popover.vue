@@ -1,21 +1,17 @@
 <template>
   <div>
-    <demo :code="code" title="popover" :tips="tip">
-      <g-popover position="right">
+    <component v-if="demo" :is="demo" :code="code" title="popover" :tips="tip">
+      <component v-if="popover" :is="popover" position="right">
         <template v-slot:content>
-         <p>这是一个弹出的popover</p>
+          <p>这是一个弹出的popover</p>
         </template>
-        <g-button>点我</g-button>
-      </g-popover>
-    </demo>
+        <component  v-if="button" :is="button">点我</component>
+      </component>
+    </component>
   </div>
 </template>
 <script>
-import GPopover from "../../../src/lib/GPopover";
-import GButton from "../../../src/lib/GButton";
-import demo from "./demo";
 export default {
-  name: "gbuttomdemo",
   data() {
     return {
       code: ` 
@@ -27,12 +23,21 @@ export default {
       </g-popover>
           `,
       tip: `注：popover内部有两个插槽，默认插槽是触发源，content插槽用于显示内容`,
+      button: null,
+      popover: null,
+      demo: null,
     };
   },
-  components: {
-    demo,
-    GPopover,
-    GButton
-  }, 
+  mounted() {
+    import("../../../src/lib/GPopover").then((moudle) => {
+      this.popover = moudle.default;
+    });
+    import("../../../src/lib/GButton").then((moudle) => {
+      this.button = moudle.default;
+    });
+    import("./demo").then((moudle) => {
+      this.demo = moudle.default;
+    });
+  },
 };
 </script>

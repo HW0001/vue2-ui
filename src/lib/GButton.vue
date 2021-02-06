@@ -32,7 +32,6 @@ export default {
 };
 </script>
 <style lang="scss" scope>
-@import "./scsshelper.scss";
 .g-button {
   padding: 0.4em 1em;
   display: inline-flex;
@@ -47,19 +46,19 @@ export default {
     outline: none;
   }
   &:hover {
-    border-color: $focus-color;
-    color: $focus-color;
+    border-color: rgb(64, 169, 255);
+    color: rgb(64, 169, 255);
     transition: all 500ms;
     .g-button-icon {
-      fill: $focus-color;
+      fill: rgb(64, 169, 255);
     }
   }
   &:active {
-    border-color: $active-color;
-    color: $active-color;
+    border-color: rgb(80, 151, 228);
+    color: rgb(80, 151, 228);
     transition: all 500ms;
     .g-button-icon {
-      fill: $active-color;
+      fill: rgb(80, 151, 228);
     }
   }
 

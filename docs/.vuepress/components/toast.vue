@@ -1,15 +1,14 @@
 <template>
   <div>
-    <demo :code="code" title="页面布局" :tips='tip'>
-      <button @click="toastClick">点我</button>
-    </demo>
+    <component v-if="demo" :is="demo"  :code="code" title="页面布局" :tips='tip'>
+      <component v-if="button" :is="button" @click="toastClick">点我</component>
+    </component>
   </div>
 </template>
 <script>
 import GToast from "../../../src/lib/GToast-plugin";
 import Vue from 'vue'
 Vue.use(GToast)
-import demo from "./demo";
 export default {
   name: "gbuttomdemo",
   data() {
@@ -26,11 +25,18 @@ export default {
         },
     });
           `,
-          tip:`注：使用前需引用 GToast-plugin插件，再使用Vue.use(GToast-plugin),将$toast挂载至vue实例中`
+          tip:`注：使用前需引用 GToast-plugin插件，再使用Vue.use(GToast-plugin),将$toast挂载至vue实例中`,
+          demo:null,
+          button:null
     };
   },
-  components: {
-    demo,
+  mounted() {
+   import("./demo").then((moudle) => {
+      this.demo = moudle.default;
+    });
+       import("../../../src/lib/GButton").then((moudle)=>{
+      this.button=moudle.default
+      })
   },
   methods: {
     toastClick() {
