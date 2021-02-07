@@ -1,6 +1,7 @@
 module.exports = {
   title: "UI",
   description: "Just playing around",
+  base:"./",
   themeConfig: {
     sidebar: [
       {
