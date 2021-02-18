@@ -1,5 +1,5 @@
 module.exports = {
-  title: "UI",
+  title: "M-UI",
   description: "Just playing around",
   base: "./",
   themeConfig: {
